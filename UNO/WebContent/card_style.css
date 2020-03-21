@@ -1,0 +1,200 @@
+*{
+	margin:0px;
+	padding:0px;
+	font-family: Helvetica Neue; 
+	align-items: center;
+}
+section{
+	padding: 100px;
+	background-position: center;
+}
+body{
+	overflow: hidden;
+	background-color:#ef8c86;
+}
+
+/*titulo*/
+
+div#titulo{
+	width:100%;
+	margin-top:100px;
+}
+/*cotiene a todos los div */
+div#contenedorPrincipal{
+	background-position: center;
+	position: absolute;
+	background-color:#f6eeda;
+	border-radius: 8px;
+	padding-left: 190px;
+	padding-right: 250px;
+	padding-bottom: 150px;
+	margin:40px 50px;
+	
+}
+/*contiene a las cartas del player*/
+div.contenedor{
+	width: 100px;
+	height: 130px;
+	float:left;
+	-webkit-transition: height .4s;
+	margin-left: 5px;
+}
+/*contiene al cementerio*/
+div.contenedor2{
+	width: 100px;
+	height: 130px;
+	float:left;
+	margin-left: 5px;
+}
+/*contiene las cartas que no se deben mostrar*/
+div.hideCard{
+	width: 100px;
+	height: 130px;
+	float:left;
+	margin-left: 5px;
+	background-color: rgb(27,54,71);
+	display: block;
+}
+/*logo que se muestra en el reverso de la carta*/
+img.logo{
+		display: block;
+		margin:50px auto;
+		width:40px;
+		-webkit-border-radius: 50%;
+}
+/*mostrara las imagenes en las cartas*/
+/*img.carta{
+	background-image: url('');
+	background-repeat:no-repeat;
+	display: block;
+	margin:50px auto;
+	width:40px;
+	-webkit-border-radius: 50%;
+}*/
+
+/*baraja de cartas*/
+div#UnoDeck{
+	margin-left: 100px;
+}
+/*cementerio*/
+div#Cementery{
+	background-color: rgb(251, 196, 119);
+	margin-left: 100px;
+}
+/*cartas del usuario*/
+div#uno{
+	background-color: rgb(208,101,3);
+}
+
+div#dos{
+	background-color: rgb(251, 196, 119);
+}
+
+div#tres{
+	background-color: rgb(22,145,190);
+}
+
+div#cuatro{
+	background-color:#99b898;);
+}
+
+div#cinco{
+	background-color:purple;
+}
+
+/*texto de las cartas, esto se elimina al agregar las imagenes de las cartas*/
+p.texto{
+	font-size: 1.2em;
+	color:white;
+	text-align: center;
+	opacity: .5;
+	-webkit-transition: padding-top .4s;
+}
+/*animacion de las cartas */
+div.contenedor:hover{
+	height:150px;
+}
+/*animacion texto*/
+div.contenedor:hover p.texto{
+	padding-top: 20px;
+	opacity: 1;
+}
+/*
+img.carta:hover{
+	height:150px;
+	
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
