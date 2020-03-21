@@ -7,9 +7,9 @@ public class Player {
 	
 	private String name;
 	private List<Card> deck;
-	private Float score;
+	private int score = 0;
 	
-	public Player(String name ,List<Card> deck,Float score) {
+	public Player(String name ,List<Card> deck,int score) {
 		this.setName(name);
 		this.setDeck(deck);
 		this.setScore(score);
@@ -42,11 +42,11 @@ public class Player {
 		this.deck.add(card);
 	}
 
-	public Float getScore() {
+	public int getScore() {
 		return score;
 	}
 
-	public void setScore(Float score) {
+	public void setScore(int score) {
 		this.score = score;
 	}
 

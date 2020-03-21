@@ -61,7 +61,7 @@ public class FileManager {
 		        Write(String.format("%s/player1.json", DirName),"");
 		        Write(String.format("%s/player2.json", DirName),"");
 		        Write(String.format("%s/Deck.json", DirName),"");
-		        Write(String.format("%s/DeckFails.json", DirName),"");
+		        Write(String.format("%s/graveyard.json", DirName),"");
 		        
 		        return DirName;
 		    } 

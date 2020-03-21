@@ -60,9 +60,25 @@ private List<Card> deck;
 	 * Reparte las cartas
 	 * @return Devuelve una Lista de Listas enlazadas de Cartas
 	 * */
-	public Card deal() {
+	public List<List<Card>> deal() {
 		
-		return this.deck.remove(Random(this.deck.size()));
+		List<List<Card>> list = new ArrayList<List<Card>>();
+		List<Card> player1 = new ArrayList<Card>();
+		List<Card> player2 = new ArrayList<Card>();
+		List<Card> graveyard = new ArrayList<Card>();
+
+		for(int i=0; i<7;i++) {
+			player1.add(this.deck.remove(Random(this.deck.size())));
+			player2.add(this.deck.remove(Random(this.deck.size())));
+		}
+		graveyard.add(this.deck.remove(Random(this.deck.size())));
+
+		list.add(player1);
+		list.add(player2);
+		list.add(graveyard);
+		list.add(this.deck);
+
+		return list;
 		
 	}
 	
