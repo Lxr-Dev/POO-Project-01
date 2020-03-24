@@ -8,11 +8,23 @@
 		<title>Insert title here</title>
 	</head>
 	<body>
-		<form onsubmit = "return start();">
-			<input type="text" name="gamerTag" id="gamerTag" placeholder="Ingrese su nombre de Jugador">
-			<button type="submit" >Enviar</button>
+		<form id = "nuevaPartida" onsubmit = "return generateCode();">
+			<input type="text" name="codeS" id="codeS">
+			<button type="submit" >Generar Código</button>
+			<button type="button" onclick="Start();" >Iniciar</button>
+		</form><br><br>
+		
+		<form id = "unirse" onsubmit = "return join();">
+			<input type="text" name="code" id="code" placeholder="Ingresa el código de tu amigo">
+			<button type="submit">Unirse</button>
 		</form>
+		<script>
+			window.onload = function(){document.querySelector("input#codeS").disabled = true}
+		</script>
 		<script src="jquery.js"></script>
-		<script src="script.js"></script>
+		<script src="startGame.js"></script>
+		<script src="newGame.js"></script>
+		<script src="joinGame.js"></script>
+		<script src="ErrorManager.js"></script>
 	</body>
 </html>

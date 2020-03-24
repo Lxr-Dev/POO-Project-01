@@ -28,7 +28,7 @@ public class FileManager {
 		StringBuilder content = new StringBuilder("");
 		try {
 			FileInputStream fis = new FileInputStream(FileName);
-			InputStreamReader isr = new InputStreamReader(fis,"");
+			InputStreamReader isr = new InputStreamReader(fis);
 			
 			BufferedReader br = new BufferedReader(isr);
 			try {
