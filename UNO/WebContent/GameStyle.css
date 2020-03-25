@@ -1,0 +1,133 @@
+@charset "UTF-8";
+*{
+	margin:0px;
+	padding:0px;
+	font-family:'Raleway',sans-serif;
+	align-items: center;
+	background-position: center;
+}
+section{
+	padding: 100px;
+	background-position: center;
+}
+body{
+	height:100vh;
+    background-image: linear-gradient(to top right,#16a085,#34495e);
+    background-repeat:no-repeat;
+    background-size:cover;
+    overflow-x: hidden;
+}
+
+/*titulo*/
+
+div#titulo{
+	width:100%;
+	margin-top:100px;
+}
+/*cotiene a todos los div */
+div#contenedorPrincipal{
+	background-position: center;
+	margin-left:135px;
+	heigth:40vh;
+	width: 80vw;
+	position: fixed;
+	background-color:#f6eeda;
+	border-radius: 8px;
+	padding-bottom:25px;
+}
+/*contiene a las cartas del player*/
+div.contenedor{
+	width: 110px;
+	height: 140px;
+	float:left;
+	-webkit-transition: height .4s;
+	margin-left: 5px;
+	border-radius:5px;
+}
+/*contiene al cementerio*/
+div.contenedor2{
+	width: 110px;
+	height: 140px;
+	float:left;
+	margin-left: 15px;
+	border-radius:5px;
+}
+/*contiene las cartas que no se deben mostrar*/
+div.hideCard{
+	width: 110px;
+	height: 140px;
+	float:left;
+	margin-left: 5px;
+	background-color: rgb(27,54,71);
+	display: block;
+	border-radius:5px;
+}
+/*logo que se muestra en el reverso de la carta*/
+img.logo{
+		display: block;
+		margin:50px auto;
+		width:40px;
+		-webkit-border-radius: 50%;
+}
+/*mostrara las imagenes en las cartas*/
+/*img.carta{
+	background-image: url('');
+	background-repeat:no-repeat;
+	display: block;
+	margin:50px auto;
+	width:40px;
+	-webkit-border-radius: 50%;
+}*/
+
+/*baraja de cartas*/
+div#UnoDeck{
+	margin-left: 100px;
+}
+/*cementerio*/
+div#Cementery{
+	background-color: rgb(251, 196, 119);
+	margin-left: 100px;
+}
+/*cartas del usuario*/
+div#p1{
+	background-color: rgb(208,101,3);
+}
+
+div#p2{
+	background-color: rgb(251, 196, 119);
+}
+
+div#p3{
+	background-color: rgb(22,145,190);
+}
+
+div#p4{
+	background-color:#99b898;);
+}
+
+div#p5{
+	background-color:purple;
+}
+
+/*texto de las cartas, esto se elimina al agregar las imagenes de las cartas*/
+p.texto{
+	font-size: 1.2em;
+	color:white;
+	text-align: center;
+	opacity: .5;
+	-webkit-transition: padding-top .4s;
+}
+/*animacion de las cartas */
+div.contenedor:hover{
+	height:150px;
+}
+/*animacion texto*/
+div.contenedor:hover p.texto{
+	padding-top: 20px;
+	opacity: 1;
+}
+/*
+img.carta:hover{
+	height:150px;
+	
+*/

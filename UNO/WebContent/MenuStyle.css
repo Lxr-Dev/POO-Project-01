@@ -1,0 +1,248 @@
+@charset "UTF-8";
+:root{
+    --red:#ff6b81;
+    --orange:#ffa502;
+    --green:#4cd137;
+    --darkgrey:#2a363b;
+    --white:#ffffff;
+    --pink:#e548f9;
+    --blue:#6ad0de;
+    --lilac:#cd84f1;
+}
+*{
+    font-family:'Raleway', sans-serif;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column
+
+}
+body{
+	height:100vh;
+    background-image: linear-gradient(to top right,#16a085,#34495e);
+    background-repeat:no-repeat;
+    background-size:cover;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+/*botones de musica*/
+button{
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+button#playpausebtn{
+    background: url(/home/haruka/Documents/playpause.png) no-repeat;
+    width: 12px;
+    height:12px;
+    cursor: pointer;
+}
+button#mutebtn{
+    background: url(/home/haruka/Documents/mute.png) no-repeat;
+    width: 5px;
+    height:12px;
+    cursor: pointer;
+}
+#menuBtns{
+	margin-left:130px;
+    background-color:#dfe4ea;
+    border-radius:8px;
+    padding:100px 350px;
+    position:fixed;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    display:inline-block;
+}
+
+.logo{
+    /*el url asi como esta, solo funciona si el archivo y la imagen estan en la misma carpeta*/
+    background-image: url('logo.png');
+	background-position:center;
+	background-repeat:no-repeat;
+    background-size:cover;
+    margin-left:80px;
+    margin-bottom:20px;
+	height:100px;
+    width:250px;
+    display:inline-block;
+    align-items: center;
+    justify-content:center;
+    flex-direction:column;
+    position:relative;
+}
+
+.bg-dark{
+    background-color: var(--darkgrey);
+    min-height:65vh;/* calc(100vh - 150px);*/
+    margin: 0;
+}
+.btn-container{
+    padding-top:150px;
+    display: fixed;
+    align-items: center;
+    justify-content: center;
+    flex-direction:column;
+    position:relative;
+  }
+ 
+  .btn-ghost{
+    position: relativate;
+    display: inline-block;
+    border: 2px solid var(--white);
+    padding: 20px 70px;
+    color: var(--black);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: var(--white);
+    transition: color 0.5s, background 0.5s;
+    margin-left: 15px;
+    margin-bottom: 15px;
+    font-size: 1em;
+    min-width: 140px;
+    text-align: center;
+    border-radius: 6px;
+
+  }
+
+  .btn-ghost.secundary{
+    background-color: transparent;
+    color: var(--white);
+  }
+  
+  .btn-ghost:hover{
+    color: var(--white);
+    background-color: transparent;
+  }
+  
+  .btn-ghost.secundary:hover{
+    color: var(--black);
+    background-color: var(--white);
+  }
+  
+  .btn-ghost:active{
+    box-shadow: inset 0 0 20px var(--white);
+  }
+  
+  .btn-ghost.secundary:active{
+    box-shadow: inset 0 0 20px var(--black);
+  }
+  
+  /*BOTON ROJO*/
+  .btn-ghost.red{
+    background-color: var(--red);
+    border-color: var(--red);
+    color: var(--white);
+  }
+  
+  .btn-ghost.secundary.red{
+    background-color: transparent;
+    color: var(--red);
+  }
+  
+  .btn-ghost.red:hover{
+    background-color: transparent;
+    color: var(--red);
+  }
+  
+  .btn-ghost.secundary.red:hover{
+    background-color: var(--red);
+    color: var(--white);
+  }
+  
+  .btn-ghost.red:active{
+    box-shadow: inset 0 0 20px var(--red);
+  }
+  
+  .btn-ghost.secundary.red:active{
+    box-shadow: inset 0 0 20px var(--white);
+  }
+  /*BOTON NARANJA*/
+  .btn-ghost.orange{
+    background-color: var(--orange);
+    border-color: var(--orange);
+    color: var(--white);
+  }
+  
+  .btn-ghost.secundary.orange{
+    background-color: transparent;
+    color: var(--orange);
+  }
+  
+  .btn-ghost.orange:hover{
+    background-color: transparent;
+    color: var(--orange);
+  }
+  
+  .btn-ghost.secundary.orange:hover{
+    background-color: var(--orange);
+    color: var(--white);
+  }
+  
+  .btn-ghost.orange:active{
+    box-shadow: inset 0 0 20px var(--orange);
+  }
+  
+  .btn-ghost.secundary.orange:active{
+    box-shadow: inset 0 0 20px var(--white);
+  }
+  /*BOTON VERDE*/
+  .btn-ghost.green{
+    background-color: var(--green);
+    border-color: var(--green);
+    color: var(--white);
+  }
+  
+  .btn-ghost.secundary.green{
+    background-color: transparent;
+    color: var(--green);
+  }
+  
+  .btn-ghost.green:hover{
+    background-color: transparent;
+    color: var(--green);
+  }
+  
+  .btn-ghost.secundary.green:hover{
+    background-color: var(--green);
+    color: var(--white);
+  }
+  
+  .btn-ghost.green:active{
+    box-shadow: inset 0 0 20px var(--green);
+  }
+  
+  .btn-ghost.secundary.green:active{
+    box-shadow: inset 0 0 20px var(--white);
+  }
+  
+  .btn-ghost.lilac{
+    background-color: var(--lilac);
+    border-color: var(--lilac);
+    color: var(--white);
+  }
+  
+  .btn-ghost.secundary.lilac{
+    background-color: transparent;
+    color: var(--lilac);
+  }
+  
+  .btn-ghost.lilac:hover{
+    background-color: transparent;
+    color: var(--lilac);
+  }
+  
+  .btn-ghost.secundary.lilac:hover{
+    background-color: var(--lilac);
+    color: var(--white);
+  }
+  
+  .btn-ghost.lilac:active{
+    box-shadow: inset 0 0 20px var(--red);
+  }
+  
+  .btn-ghost.secundary.lilac:active{
+    box-shadow: inset 0 0 20px var(--white);
+  }
+
+  
