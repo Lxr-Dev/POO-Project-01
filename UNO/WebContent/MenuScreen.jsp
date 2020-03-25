@@ -2,23 +2,29 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>U N O &copy;</title>
-<link rel='stylesheet' type='text/css' href='MenuStyle.css'>
-<link rel='stylesheet' type='text/css' href='popupStyle.css'>
-</head>
-<body>
-<%
-out.println("<div id='menuBtns' class='bg-dark btn-container border'><div id='oneLogo' class='logo'></div>"
-+"<div id='btn1'><a href='#' id='abrir1' class='btn-ghost red '>Nueva Partida</a></div>" 
-+"<div id='btn2'><a href='#' id='abrir2' class='btn-ghost orange'>Ingresar a partida </a></div>"
-+"<div id='btn3'><a href='#' id='abrir3' class='btn-ghost green'>Scores</a></div>"
-+"<div id='btn4'><a href='#' id='abrir4' class='btn-ghost lilac '>creditos</a></div>"
-+"<div id='miModal' class='modal'><div class='flex' id='flex'><div class='contenido-modal'> "
-+"<div class='modal-header flex'><span class='close' id='close'>&times</span>"
-+"</div><div id='message'class='modal-body' onclick='function()'></div></div></div></div>");
-%>
-<script src="popup.js"></script>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>U N O &copy;</title>
+		<link rel='stylesheet' type='text/css' href='MenuStyle.css'>
+		<link rel='stylesheet' type='text/css' href='popupStyle.css'>
+	</head>
+	<body>
+		<%
+		out.println(
+		"<div id='menuBtns' class='bg-dark btn-container border'><div id='oneLogo' class='logo'></div>"
+		+"<div id='btn1'><a id='abrir1' class='btn-ghost red '>Nueva Partida</a></div>" 
+		+"<div id='btn2'><a id='abrir2' class='btn-ghost orange'>Ingresar a partida </a></div>"
+		+"<div id='btn3'><a id='abrir3' class='btn-ghost green'>Scores</a></div>"
+		+"<div id='btn4'><a id='abrir4' class='btn-ghost lilac '>creditos</a></div>"
+		+"<div id='miModal' class='modal'><div class='flex' id='flex'><div class='contenido-modal'> "
+		+"<div class='modal-header flex'><span class='close' id='close'>&times</span>"
+		+"</div><div id='message'class='modal-body'></div></div></div></div>");
+		%>
+		<script src="jquery.js"></script>
+		<script src="ErrorManager.js"></script>
+		<script src="newGame.js"></script>
+		<script src="startGame.js"></script>
+		<script src="joinGame.js"></script>
+		<script src="popup.js"></script>
+	</body>
 </html>

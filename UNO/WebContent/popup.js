@@ -8,8 +8,8 @@ let abrir3 = document.getElementById('abrir3');
 let abrir4 = document.getElementById('abrir4');
 let cerrar = document.getElementById('close');
 //funcion para generar codigo
-var message1='<h4>CODIGO ACCESO</h4><p></p><br><form action="OneScreen.jsp"><button class="btn-submit">Entrar</button></form>';
-var message2='<h4>INGRESE CODIGO ACCESO</h4><form action="OneScreen.jsp"><input id="contenedor-input" type="text" placeholder="ingrese codigo de acceso"><br><button class="btn-submit">Entrar</button></form>';
+var message1='<h4 id="codeS">CÓDIGO ACCESO</h4><p></p><br><form onsubmit="return generateCode();"><button type="submit" class="btn-submit">Generar Código</button>&nbsp;&nbsp;&nbsp;<button onclick="Start();" class="btn-submit">Iniciar Partida</button></form>';
+var message2='<div id="exception"></div><h4>INGRESE CÓDIGO ACCESO</h4><form onsubmit="return join();"><input id="code" type="text" placeholder="Ingrese código de acceso"><br><button type="submit" class="btn-submit">Unirse</button></form>';
 var message3='<table><tr><td>Name</td><td>Score</td></tr><tr><td>player1</td><td>50</td></tr></table>';
 var message4='<p><h4>INTEGRANTES:</h4><h4>name1<br>name2<br>name3<br>name4</h4><br>POO &copy| 1PAC 2020</p>';
 

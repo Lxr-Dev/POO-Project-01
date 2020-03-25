@@ -16,9 +16,10 @@ function join(){
 			location = `Duel.jsp`;
 			
 		}else{
-		
+			//var abrir2 = document.getElementById('abrir2');
+			
 			var em = new ErrorManager();
-			var body = document.querySelector("body");
+			var body = document.getElementById("message");
 			var errorTag = em.insertTag(body);
 			em.show(errorTag,data.message);
 			

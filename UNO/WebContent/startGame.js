@@ -3,7 +3,8 @@
  */
 
 function Start(){
-	document.cookie = `code=${codeS.value};max-age:7200`;
+	var codeS = document.querySelector("h4#codeS").innerHTML;
+	document.cookie = `code=${codeS};max-age:7200`;
 	document.cookie = `player=1`;
 	location = `Duel.jsp`;
 }
