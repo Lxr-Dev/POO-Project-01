@@ -13,6 +13,16 @@ form .btn-submit {
 	cursor: pointer;
 	transition: .3s ease all;
 }
+/*pendiente cambiar el estilo de tabla*/
+table{
+	align-items:center;
+	font-size: 15px;
+	text-align: center;
+	border:1px solid green;
+}
+tr{
+	border:1px solid green;
+}
 
 #contenedor-input{
 	width: 100%;
