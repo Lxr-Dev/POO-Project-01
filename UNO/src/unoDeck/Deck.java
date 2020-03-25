@@ -31,24 +31,24 @@ private List<Card> deck;
 			//Generando las cartas del 0 al 9 de 4 colores distintos
 			for (int i=0; i<10; i++) {
 				//numero, color, imágen, tipo
-				this.deck.add(new Card(i,0,"Carta Verde","numeric"));
-				this.deck.add(new Card(i,1,"Carta Roja","numeric"));
-				this.deck.add(new Card(i,2,"Carta Azul","numeric"));
-				this.deck.add(new Card(i,3,"Carta Amarilla","numeric"));
+				this.deck.add(new Card(i,0,String.format("Resources/green%s.png",i),"numeric"));
+				this.deck.add(new Card(i,1,String.format("Resources/orange%s.png",i),"numeric"));
+				this.deck.add(new Card(i,2,String.format("Resources/rose%s.png",i),"numeric"));
+				this.deck.add(new Card(i,3,String.format("Resources/white%s.png",i),"numeric"));
 			}
 			
-			//Generando las cartas de +2, Cambio de Dirección, Pierde Turno de 4 colores distintos
+			//Generando las cartas de +2, Cambio de Dirección, Cambio de 4 colores distintos
 			for (int i=10;i<13;i++) {
-				this.deck.add(new Card(i,0,"Carta Verde","special"));
-				this.deck.add(new Card(i,1,"Carta Roja","special"));
-				this.deck.add(new Card(i,2,"Carta Azul","special"));
-				this.deck.add(new Card(i,3,"Carta Amarilla","special"));
+				this.deck.add(new Card(i,0,String.format("Resources/green%s.png",i),"special"));
+				this.deck.add(new Card(i,1,String.format("Resources/orange%s.png",i),"special"));
+				this.deck.add(new Card(i,2,String.format("Resources/rose%s.png",i),"special"));
+				this.deck.add(new Card(i,3,String.format("Resources/white%s.png",i),"special"));
 			}
 			
 			//Generando las cartas especiales +4 y cambio de color
 			for (int i=0;i<2;i++) {
-				this.deck.add(new Card(13,4,"Carta Especial +4","special"));
-				this.deck.add(new Card(14,4,"Carta Especial Cambio de Color","special"));
+				this.deck.add(new Card(13,4,"Resources/+4.png","special"));
+				this.deck.add(new Card(14,4,"Resources/wild.png","special"));
 			}
 			
 			count ++;

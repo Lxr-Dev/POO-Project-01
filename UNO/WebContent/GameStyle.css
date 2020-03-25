@@ -6,9 +6,34 @@
 	align-items: center;
 	background-position: center;
 }
+
+div.scrollmenu {
+	background-color: #333;
+	overflow: auto;
+	white-space: nowrap;
+}
+div.scrollmenu a {
+	display: inline-block;
+	color: white;
+	text-align: center;
+	padding: 14px;
+	text-decoration: none;
+	margin: 20;
+}
+	
+div.scrollmenu a:hover {
+ 	background-color: #777;
+}
+
 section{
-	padding: 100px;
+	padding: 10px;
 	background-position: center;
+}
+
+div#player_cards{
+	position:fixed;
+	top:50vh;
+	left:20vw;
 }
 body{
 	height:100vh;
@@ -26,14 +51,17 @@ div#titulo{
 }
 /*cotiene a todos los div */
 div#contenedorPrincipal{
-	background-position: center;
-	margin-left:135px;
-	heigth:40vh;
-	width: 80vw;
-	position: fixed;
+	/*background-position: center;
+	/*margin-left:135px;*/
+	heigth:100px;
+	width: 80px;
+	position: absolute;
+	display:block;
 	background-color:#f6eeda;
-	border-radius: 8px;
-	padding-bottom:25px;
+	top:0;
+	left:10;
+	/*border-radius: 8px;*/
+	/*padding-bottom:25px;*/
 }
 /*contiene a las cartas del player*/
 div.contenedor{

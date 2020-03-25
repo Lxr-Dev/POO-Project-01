@@ -56,13 +56,13 @@ button#mutebtn{
 
 .logo{
     /*el url asi como esta, solo funciona si el archivo y la imagen estan en la misma carpeta*/
-    background-image: url('logo.png');
+    background-image: url('Resources/logo.png');
 	background-position:center;
 	background-repeat:no-repeat;
     background-size:cover;
     margin-left:80px;
     margin-bottom:20px;
-	height:100px;
+	height:150px;
     width:250px;
     display:inline-block;
     align-items: center;

@@ -13,7 +13,7 @@ function join(){
 			//Redirigir al usuario a la siguiente pantalla
 			document.cookie = `code=${code.value};max-age:7200`;
 			document.cookie = `player=2`;
-			location = `Duel.jsp`;
+			location = `OneScreen.jsp`;
 			
 		}else{
 			//var abrir2 = document.getElementById('abrir2');

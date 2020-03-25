@@ -2,21 +2,71 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-<%
-out.print("<link rel='stylesheet' href='GameStyle.css'>"
-+"<div id='contenedorPrincipal'>");
-//agregar String.format y en los valores p# y op# el numeral se cambia por el numero de un contador = total de cartas
-//
-out.print("<section id='oponent_cards'><div class='hideCard' id='op1'><img class='logo' src='logo.png'></div></section>"
-		+"<section id='deck'><div class='hideCard' id='UnoDeck'><img class='logo' src='logo.png'></div>"
-		+"<div class='contenedor2' id='Cementery'><img class='' src=''><p class='texto'>Cementery</p></div></section>"
-		+"<section id='player_cards'><div class='contenedor' id='p1'><img class='' src=''><p class='texto'>carta1</p></div></section></div>");
-%>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<title>UNO</title>
+		<style >
+			body{
+				height:100vh;
+				margin:0;
+				padding:0;
+			    background-image: linear-gradient(to top right,#16a085,#34495e);
+			    background-repeat:no-repeat;
+			    background-size:cover;
+			    overflow: hidden;
+			}
+			
+			div#contenedor{
+				position:relative;
+				height:90vh;
+				width:90vw;
+				top:5vh;
+				left:5vw;
+				background-color:#f6eeda;
+				border-radius:8px;
+			}
+			div.scroll {
+			  background-color: #333;
+			  overflow: auto;
+			  white-space: nowrap;
+			}
+			
+			div.scroll a {
+			  display: inline-block;
+			  color: white;
+			  text-align: center;
+			  padding: 14px;
+			  text-decoration: none;
+			  margin: 20;
+			}
+			
+			div.scroll a:hover {
+			  background-color: #777;
+			}
+			
+			div#player{
+				position:relative;
+				height:10vh;
+				width:49.3vw;
+				top:65vh;
+				left:20.35vw;
+				background-color:green;
+				border-radius:8px;
+			}
+			
+			div.cards{
+				display:block;
+				float:left;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="contenedor">
+			<div id = "player">
+    			<div class="scroll" id="scrollmenu"></div>
+    		</div>	
+		</div>
+		<script src="jquery.js"></script>
+		<script src="loadCards.js"></script>
+	</body>
 </html>
