@@ -71,7 +71,16 @@ private List<Card> deck;
 			player1.add(this.deck.remove(Random(this.deck.size())));
 			player2.add(this.deck.remove(Random(this.deck.size())));
 		}
-		graveyard.add(this.deck.remove(Random(this.deck.size())));
+		
+		
+		while(true) {
+			int i = Random(this.deck.size());
+			if(this.deck.get(i).getValue()<10) {				
+				graveyard.add(this.deck.remove(i));
+				break;
+			}
+			
+		}
 
 		list.add(player1);
 		list.add(player2);

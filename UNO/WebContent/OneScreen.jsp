@@ -26,7 +26,7 @@
 				border-radius:8px;
 			}
 			div.scroll {
-			  background-color: #333;
+			  
 			  overflow: auto;
 			  white-space: nowrap;
 			}
@@ -46,11 +46,17 @@
 			
 			div#player{
 				position:relative;
-				height:10vh;
-				width:49.3vw;
-				top:65vh;
-				left:20.35vw;
-				background-color:green;
+				width:44.55vw;
+				top:22vh;
+				left:22.725vw;
+				border-radius:8px;
+			}
+			
+			div#enemy{
+				position:relative;
+				width:50.55vw;
+				top:2vh;
+				left:22.725vw;
 				border-radius:8px;
 			}
 			
@@ -58,13 +64,47 @@
 				display:block;
 				float:left;
 			}
+			div#table{
+				position:relative;
+				height:28vh;
+				width:30vw;
+				top:16.5vh;
+				left:36vw;
+			}			
+			
+			canvas#currentColor{
+				position:absolute;
+				floar:left;
+				height:40px;
+				width:40px;
+				margin-top:40px;
+				border:1px solid black;
+			}
+			
+			img#graveyard{
+				margin-left:20px;
+				margin-right:20px;
+			}
+			
 		</style>
 	</head>
 	<body>
 		<div id="contenedor">
+			
+			<div id = "enemy">
+				<div class="scroll" id="enemyCards"></div>
+			</div>
+			
+			<div id = "table">
+				<button class="mazo" id="gameDeck"><img src="Resources/BackCard.png" height="115vw"></button>
+				<img id="graveyard" data-value="" height="115vw">
+				<canvas id ="currentColor"></canvas>
+			</div>
+			
 			<div id = "player">
     			<div class="scroll" id="scrollmenu"></div>
     		</div>	
+    		
 		</div>
 		<script src="jquery.js"></script>
 		<script src="loadCards.js"></script>
