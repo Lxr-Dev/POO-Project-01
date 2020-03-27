@@ -59,6 +59,10 @@
 				left:22.725vw;
 				border-radius:8px;
 			}
+			img#deckCards{
+				position:relative;
+				margin:10px;
+			}
 			
 			div.cards{
 				display:block;
@@ -96,15 +100,14 @@
 			</div>
 			
 			<div id = "table">
-				<button class="mazo" id="gameDeck"><img src="Resources/BackCard.png" height="115vw"></button>
+				<img class="mazo" ondblclick="Draw(this);" id="gameDeck" src="Resources/BackCard.png" height="115vw">
 				<img id="graveyard" data-value="" height="115vw">
 				<canvas id ="currentColor"></canvas>
 			</div>
 			
 			<div id = "player">
     			<div class="scroll" id="scrollmenu"></div>
-    		</div>	
-    		
+    		</div>	    		
 		</div>
 		<script src="jquery.js"></script>
 		<script src="loadCards.js"></script>
