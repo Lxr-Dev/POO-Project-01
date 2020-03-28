@@ -1,10 +1,6 @@
 /**
  * 
  */
-/*
-var primerIntervalo = false;
-var segundoIntervaloCorriendo = false;*/
-
 
 window.onload = load;
 function load() {
@@ -17,7 +13,6 @@ function load() {
 		
 		for (i in data.deck){
 			images += `<img style="margin:5px;" class="deckCards" ondblclick="Throw(this);" data-value="${i}" src="${data.deck[i].img}" height="115vw"/>`; 
-			console.log(data.deck[i].img);
 		}
 		document.querySelector("div#scrollmenu").innerHTML=images;
 		
@@ -49,43 +44,23 @@ function load() {
 			document.querySelector("canvas#currentColor").style.backgroundColor = "green";
 			document.querySelector("canvas#currentColor").dataset.value = 4;
 		}
-		
+		setTimeout(listener,5000);
 	});
-	
-	/*
-	if(primerIntervalo == false){
-		primerIntervalo = true;
-		setInterval(currentTurn(), 1000);
-	}*/
 	
 	return false;	
 }
-/*
-var mondongo ;
 
-function currentTurn(){	
-	
-	if (document.querySelector("canvas#yourTurn").getAttribute('data-value') == "false"){
-		console.log("mondongo");
-		mondongo = setInterval(function(){
-			$.post("changeTurn.jsp",{"cookies":document.cookie},function(data){
-				data = JSON.parse(`${data}`);
-				document.querySelector("canvas#currentColor").dataset.value = data.yourTurn;
-				console.log(data.yourTurn);
-				//load();
-			});
-		}, 1000);
-		segundoIntervaloCorriendo = true;
-	}
-	else {
-		console.log("no paso");
-		clearInterval(mondongo);
-		segundoIntervaloCorriendo = false;
-		document.querySelector("canvas#yourTurn").style.backgroundColor = "blue";
-	}
-
+function listener(){
+	$.post("changeTurn.jsp",{"cookies":document.cookie},function(data){
+		data = JSON.parse(`${data}`);
+		if(data.yourTurn){
+			console.log("Es tu turno chaval");
+		}else{
+			console.log("No es tu turno, estoy esperando");
+		}
+		load();
+	});
 }
-*/
 
 function Throw(imgButton){
 

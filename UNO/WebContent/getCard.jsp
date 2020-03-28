@@ -30,7 +30,16 @@
     			result.append(String.format(",\"enemy\":%s,",count.length -1));
     			
     		}
-    		result.append(String.format("\"graveyard\":%s}",fm.Read(String.format("%s/graveyard.json",code))));
+    		result.append(String.format("\"graveyard\":%s,",fm.Read(String.format("%s/graveyard.json",code))));
+    		
+    		
+    		if(player.trim().equals(fm.Read(String.format("%s/turn.txt",code)).toString().replaceAll("\n", ""))){			
+    			result.append(String.format("\"playerStatus\":true}"));
+    		}
+    		else{
+    			result.append(String.format("\"playerStatus\":false}"));
+    		}
+    		
     		out.print(result.toString());
     	}
     %>
