@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 	<%@page import="java.util.List"%>
-    <%@ page import="gameHandler.FileManager" %>
+    <%@ page import="gameHandler.*" %>
     <%@ page import="unoDeck.*" %>
 <% 
 	if(request.getParameter("option") != null){
@@ -18,6 +18,7 @@
 				Converter c = new Converter();
 				int index = Integer.parseInt((request.getParameter("index").toString().trim()));
 				List<Card> lst = new ArrayList<>();
+				ActionCard ac = new ActionCard();  
 				String[] cookies = request.getParameter("cookies").toString().split(";");
 	    		String code = "";
 	    		String player = "";
@@ -34,38 +35,40 @@
 	    		if (player.equals("1")){
 	    			
 	    			lst = c.toCardList(fm.Read(String.format("%s/player1.json",code)).trim());
-	    			if (lst.get(index).getValue() == Integer.parseInt(request.getParameter("currentValue").toString())||
-	    				lst.get(index).getColor() == Integer.parseInt(request.getParameter("currentColor").toString())){
-	    				  				
-	    				List<Card> graveyard = new ArrayList<>();
-	    				graveyard.add(lst.get(index));
-	    				lst.remove(index);
-
-	    				fm.Write(String.format("%s/graveyard.json", code),c.toJSONString(graveyard));
-	    				fm.Write(String.format("%s/player1.json", code),c.toJSONString(lst));
+	    			
+	    			
+	    			if (lst.get(index).getValue() == Integer.parseInt(request.getParameter("currentValue").toString()) || lst.get(index).getColor() == Integer.parseInt(request.getParameter("currentColor").toString())){ 				
 	    				
+	    				if(lst.get(index).getValue() == 10){
+	    					ac.plusTwo(player,code,Integer.parseInt(request.getParameter("index").toString()));	
+	    				}
+	    				else{
+	    					ac.ThrowNumericCard(player,code,Integer.parseInt(request.getParameter("index").toString()));
+	    				}  
 	    				out.print("{\"status\":true}");
 	    			}
-	    			else{
-	    				out.print("{\"status\":false}");
-	    			}
-	    		}else{
 	    			
+	    			else if(lst.get(index).getValue() == 13){
+    					ac.plusFour(player,code,Integer.parseInt(request.getParameter("index").toString()));
+	    			}
+	    		}
+	    		else{	    			
 	    			
 	    			lst = c.toCardList(fm.Read(String.format("%s/player2.json",code)).trim());
 	    			
-	    			if (lst.get(index).getValue() == Integer.parseInt(request.getParameter("currentValue").toString())|
-		    			lst.get(index).getColor() == Integer.parseInt(request.getParameter("currentColor").toString())){
-	    				List<Card> graveyard = new ArrayList<>();
-	    				graveyard.add(lst.get(index));
-	    				lst.remove(index);
-
-	    				fm.Write(String.format("%s/graveyard.json", code),c.toJSONString(graveyard));
-	    				fm.Write(String.format("%s/player2.json", code),c.toJSONString(lst));
+	    			if (lst.get(index).getValue() == Integer.parseInt(request.getParameter("currentValue").toString()) || lst.get(index).getColor() == Integer.parseInt(request.getParameter("currentColor").toString())){ 				
+	    				
+	    				if(lst.get(index).getValue() == 10){
+	    					ac.plusTwo(player,code,Integer.parseInt(request.getParameter("index").toString()));	
+	    				}
+	    				else{
+	    					ac.ThrowNumericCard(player,code,Integer.parseInt(request.getParameter("index").toString()));
+	    				}  
 	    				out.print("{\"status\":true}");
 	    			}
-	    			else{
-	    				out.print("{\"status\":false}");
+	    			
+	    			else if(lst.get(index).getValue() == 13){
+    					ac.plusFour(player,code,Integer.parseInt(request.getParameter("index").toString()));
 	    			}
 	    		}
 			}
