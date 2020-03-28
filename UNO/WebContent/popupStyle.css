@@ -13,15 +13,46 @@ form .btn-submit {
 	cursor: pointer;
 	/*transition: .3s ease all;*/
 }
-/*pendiente cambiar el estilo de tabla*/
-table{
-	align-items:center;
-	font-size: 15px;
-	text-align: center;
-	border:1px solid green;
+/*apariencia para las tabla de scores e integrantes*/
+.container-table{
+	width:90%;
+	background: white;
+	margin: 5px auto;
+	display: grid;
+	grid-template-columns:2;
+	grid-row: 15px;
+
 }
-tr{
-	border:1px solid green;
+.table-title{
+	grid-column-start:1;
+	grid-column-end:3;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+.table-header, .table-item {
+	justify-content: center;
+	align-items: center;
+}
+.table-header{
+	font-weight: bold;
+	font-size: 1m;
+	padding: 10px;
+}
+.table-item{
+	padding: 10px;
+	font-size: 1em;
+}
+
+.table-footer{
+	padding: 10px;
+	justify-content: center;
+	align-items: center;
+	grid-column-start:1;
+	grid-column-end:3;
+	
 }
 
 #code{
