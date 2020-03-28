@@ -10,8 +10,12 @@ let cerrar = document.getElementById('close');
 //funcion para generar codigo
 var message1='<h4 id="codeS">CÓDIGO ACCESO</h4><p></p><br><form><button type="button" onclick="generateCode();" class="btn-submit">Generar Código</button>&nbsp;&nbsp;&nbsp;<button type="button" onclick="Start();" class="btn-submit">Iniciar Partida</button></form>';
 var message2='<div id="exception"></div><h4>INGRESE CÓDIGO ACCESO</h4><form onsubmit="return join();"><input id="code" type="text" placeholder="Ingrese código de acceso"><br><button type="submit" class="btn-submit">Unirse</button></form>';
-var message3='<table><tr><td>Name</td><td>Score</td></tr><tr><td>player1</td><td>50</td></tr></table>';
-var message4='<p><h4>INTEGRANTES:</h4><h4>name1<br>name2<br>name3<br>name4</h4><br>POO &copy| 1PAC 2020</p>';
+var message3='<div id="scoreTable" class="container-table"><div class="table-title">Tabla de Posiciones</div><div class="table-header">Nombre</div><div class="table-header">Puntuacion</div><div class="table-item">player1</div><div class="table-item">500 pts</div><div class="table-item">player2</div><div class="table-item">354 pts</div><div class="table-item"></div><div class="table-item"></div></div>';
+var message4='<div id="credits" class="container-table"><div class="table-title">Integrantes</div>'
++'<div class="table-header">Nombre </div><div class="table-header">#Cta.</div>'
++'<div class="table-item">name1</div><div class="table-item">20201515963</div><div class="table-item">name2</div>'
++'<div class="table-item">20201515963</div><div class="table-item">name3</div><div class="table-item">20201515963</div>'
++'<div class="table-item">name4</div><div class="table-item">20201515963</div><div class="table-footer">POO &copy;</div></div>';
 
 abrir1.addEventListener('click',function(){
 	document.getElementById("message").innerHTML = message1;
