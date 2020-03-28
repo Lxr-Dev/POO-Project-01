@@ -1,9 +1,10 @@
 /**
  * 
  */
+/*
+var primerIntervalo = false;
+var segundoIntervaloCorriendo = false;*/
 
-var yourTurn = false;
-var loadPage = false;
 
 window.onload = load;
 function load() {
@@ -51,29 +52,40 @@ function load() {
 		
 	});
 	
+	/*
+	if(primerIntervalo == false){
+		primerIntervalo = true;
+		setInterval(currentTurn(), 1000);
+	}*/
 	
-	return false;
-	
+	return false;	
 }
-
-
+/*
 var mondongo ;
 
-function currentTurn(){
+function currentTurn(){	
 	
-	if(yourTurn == false){
+	if (document.querySelector("canvas#yourTurn").getAttribute('data-value') == "false"){
+		console.log("mondongo");
 		mondongo = setInterval(function(){
 			$.post("changeTurn.jsp",{"cookies":document.cookie},function(data){
 				data = JSON.parse(`${data}`);
-				yourTurn = data.yourTurn;
+				document.querySelector("canvas#currentColor").dataset.value = data.yourTurn;
+				console.log(data.yourTurn);
+				//load();
 			});
-		}, 5000);
+		}, 1000);
+		segundoIntervaloCorriendo = true;
 	}
-	else{
+	else {
+		console.log("no paso");
 		clearInterval(mondongo);
+		segundoIntervaloCorriendo = false;
+		document.querySelector("canvas#yourTurn").style.backgroundColor = "blue";
 	}
-}
 
+}
+*/
 
 function Throw(imgButton){
 
@@ -85,8 +97,7 @@ function Throw(imgButton){
 	$.post("Validator.jsp",{"cookies":cookies,"index":imgButton.getAttribute('data-value'),"currentColor":color,"currentValue":currentValue,"option":"throw"},function(data){
 		data = JSON.parse(`${data}`);
 		if(data.status){
-			load();
-			
+			load();			
 		}
 		else {
 			alert("No sea tonto, tire otra carta");

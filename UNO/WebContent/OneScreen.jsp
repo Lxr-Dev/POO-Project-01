@@ -84,6 +84,14 @@
 				margin-top:40px;
 				border:1px solid black;
 			}
+			canvas#yourTurn{
+				position:absolute;
+				floar:left;
+				height:40px;
+				width:40px;
+				margin-top:40px;
+				border:1px solid black;
+			}
 			
 			img#graveyard{
 				margin-left:20px;
