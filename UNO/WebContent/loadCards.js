@@ -2,8 +2,10 @@
  * 
  */
 
-window.onload = load;
+var yourTurn = false;
+var loadPage = false;
 
+window.onload = load;
 function load() {
 	var cookies = document.cookie;
 	$.post("getCard.jsp",{"cookies":cookies},function(data){
@@ -49,8 +51,27 @@ function load() {
 		
 	});
 	
+	
 	return false;
 	
+}
+
+
+var mondongo ;
+
+function currentTurn(){
+	
+	if(yourTurn == false){
+		mondongo = setInterval(function(){
+			$.post("changeTurn.jsp",{"cookies":document.cookie},function(data){
+				data = JSON.parse(`${data}`);
+				yourTurn = data.yourTurn;
+			});
+		}, 5000);
+	}
+	else{
+		clearInterval(mondongo);
+	}
 }
 
 
@@ -59,10 +80,13 @@ function Throw(imgButton){
 	var cookies = document.cookie;
 	var color = document.querySelector("canvas#currentColor").getAttribute('data-value');
 	var currentValue = document.querySelector("img#graveyard").getAttribute('data-value');
+	
+	
 	$.post("Validator.jsp",{"cookies":cookies,"index":imgButton.getAttribute('data-value'),"currentColor":color,"currentValue":currentValue,"option":"throw"},function(data){
 		data = JSON.parse(`${data}`);
 		if(data.status){
 			load();
+			
 		}
 		else {
 			alert("No sea tonto, tire otra carta");
@@ -79,6 +103,7 @@ function Draw(imgButton){
 		data = JSON.parse(`${data}`);
 		if(data.status){
 			load();
+			
 		}
 		else {
 			alert("No sea tonto, se saco");

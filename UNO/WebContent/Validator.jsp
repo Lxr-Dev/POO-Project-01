@@ -65,6 +65,7 @@
 	    					ac.ThrowNumericCard(player,code,Integer.parseInt(request.getParameter("index").toString()));
 	    				}  
 	    				out.print("{\"status\":true}");
+	    				//out.print("{\"status\":true, \"Turno\":"result"");
 	    			}
 	    			
 	    			else if(lst.get(index).getValue() == 13){
