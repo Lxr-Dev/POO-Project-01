@@ -98,6 +98,16 @@
 				margin-right:20px;
 			}
 			
+			.btn_color{
+				width:60px;
+				height:20px;
+			}
+			
+			.colorContainer{
+				position:absolute;
+				
+			}		
+			
 		</style>
 	</head>
 	<body>
@@ -108,9 +118,15 @@
 			</div>
 			
 			<div id = "table">
-				<img class="mazo" ondblclick="Draw(this);" id="gameDeck" src="Resources/BackCard.png" height="115vw">
+				<img class="mazo" onclick="Draw(this);" id="gameDeck" src="Resources/BackCard.png" height="115vw">
 				<img id="graveyard" data-value="" height="115vw">
 				<canvas id ="currentColor"></canvas>
+				<div class="colorContainer">
+					<button class="btn_color" style='background-color:pink;'>Pink</button>
+					<button class="btn_color" style='background-color:green;'>Green</button>
+					<button class="btn_color" style='background-color:gray;'>Gray</button>
+					<button class="btn_color" style='background-color:orange;'>Orange</button>
+				</div>
 			</div>
 			
 			<div id = "player">

@@ -12,7 +12,7 @@ function load() {
 		var images="";
 		
 		for (i in data.deck){
-			images += `<img style="margin:5px;" class="deckCards" ondblclick="Throw(this);" data-value="${i}" src="${data.deck[i].img}" height="115vw"/>`; 
+			images += `<img style="margin:5px;" class="deckCards" onclick="Throw(this);" data-value="${i}" src="${data.deck[i].img}" height="115vw"/>`; 
 		}
 		document.querySelector("div#scrollmenu").innerHTML=images;
 		
