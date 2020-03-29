@@ -2,6 +2,8 @@
  * 
  */
 
+var running;
+
 window.onload = load;
 function load() {
 	var cookies = document.cookie;
@@ -44,7 +46,7 @@ function load() {
 			document.querySelector("canvas#currentColor").style.backgroundColor = "green";
 			document.querySelector("canvas#currentColor").dataset.value = 4;
 		}
-		setTimeout(listener,5000);
+		var running = setTimeout(listener,2500);
 	});
 	
 	return false;	
@@ -68,7 +70,6 @@ function Throw(imgButton){
 	var color = document.querySelector("canvas#currentColor").getAttribute('data-value');
 	var currentValue = document.querySelector("img#graveyard").getAttribute('data-value');
 	
-	
 	$.post("Validator.jsp",{"cookies":cookies,"index":imgButton.getAttribute('data-value'),"currentColor":color,"currentValue":currentValue,"option":"throw"},function(data){
 		data = JSON.parse(`${data}`);
 		if(data.status){
@@ -89,7 +90,6 @@ function Draw(imgButton){
 		data = JSON.parse(`${data}`);
 		if(data.status){
 			load();
-			
 		}
 		else {
 			alert("No sea tonto, se saco");

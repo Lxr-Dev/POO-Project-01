@@ -8,7 +8,11 @@
 <% 
 	if(request.getParameter("option") != null){
 		
+		ActionCard ac = new ActionCard();  
+		
 		if(request.getParameter("option").toString().trim().matches("^throw$")){
+			
+		
 			if(request.getParameter("cookies") != null &&
 			   request.getParameter("index") != null && 
 			   request.getParameter("currentColor") != null && 
@@ -18,7 +22,6 @@
 				Converter c = new Converter();
 				int index = Integer.parseInt((request.getParameter("index").toString().trim()));
 				List<Card> lst = new ArrayList<>();
-				ActionCard ac = new ActionCard();  
 				String[] cookies = request.getParameter("cookies").toString().split(";");
 	    		String code = "";
 	    		String player = "";
@@ -31,47 +34,57 @@
 	    			player = cookies[1].trim().replaceAll("player=","");
 	    			code = cookies[0].trim().replaceAll("code=","");
 	    		}
-
-	    		if (player.equals("1")){
-	    			
-	    			lst = c.toCardList(fm.Read(String.format("%s/player1.json",code)).trim());
-	    			
-	    			
-	    			if (lst.get(index).getValue() == Integer.parseInt(request.getParameter("currentValue").toString()) || lst.get(index).getColor() == Integer.parseInt(request.getParameter("currentColor").toString())){ 				
-	    				
-	    				if(lst.get(index).getValue() == 10){
-	    					ac.plusTwo(player,code,Integer.parseInt(request.getParameter("index").toString()));	
-	    				}
-	    				else{
-	    					ac.ThrowNumericCard(player,code,Integer.parseInt(request.getParameter("index").toString()));
-	    				}  
-	    				out.print("{\"status\":true}");
-	    			}
-	    			
-	    			else if(lst.get(index).getValue() == 13){
-    					ac.plusFour(player,code,Integer.parseInt(request.getParameter("index").toString()));
-	    			}
-	    		}
-	    		else{	    			
-	    			
-	    			lst = c.toCardList(fm.Read(String.format("%s/player2.json",code)).trim());
-	    			
-	    			if (lst.get(index).getValue() == Integer.parseInt(request.getParameter("currentValue").toString()) || lst.get(index).getColor() == Integer.parseInt(request.getParameter("currentColor").toString())){ 				
-	    				
-	    				if(lst.get(index).getValue() == 10){
-	    					ac.plusTwo(player,code,Integer.parseInt(request.getParameter("index").toString()));	
-	    				}
-	    				else{
-	    					ac.ThrowNumericCard(player,code,Integer.parseInt(request.getParameter("index").toString()));
-	    				}  
-	    				out.print("{\"status\":true}");
-	    				//out.print("{\"status\":true, \"Turno\":"result"");
-	    			}
-	    			
-	    			else if(lst.get(index).getValue() == 13){
-    					ac.plusFour(player,code,Integer.parseInt(request.getParameter("index").toString()));
-	    			}
-	    		}
+	    		
+				if(ac.verifyTurn(player, code)){
+		    		if (player.equals("1")){
+		    			
+		    			lst = c.toCardList(fm.Read(String.format("%s/player1.json",code)).trim());
+		    			
+		    			
+		    			if (lst.get(index).getValue() == Integer.parseInt(request.getParameter("currentValue").toString()) || lst.get(index).getColor() == Integer.parseInt(request.getParameter("currentColor").toString())){ 				
+		    				
+		    				if(lst.get(index).getValue() == 10){
+		    					ac.plusTwo(player,code,Integer.parseInt(request.getParameter("index").toString()));	
+		    				}
+		    				else{
+		    					ac.ThrowNumericCard(player,code,Integer.parseInt(request.getParameter("index").toString()));
+		    				}
+		    				ac.changePlayer(player, code);
+		    				out.print("{\"status\":true}");
+		    			}
+		    			
+		    			else if(lst.get(index).getValue() == 13){
+	    					ac.plusFour(player,code,Integer.parseInt(request.getParameter("index").toString()));
+		    			}else{
+		    				out.print("{\"status\":false}");
+		    			}
+		    		}else{	    			
+		    			
+						lst = c.toCardList(fm.Read(String.format("%s/player2.json",code)).trim());
+		    			
+		    			
+		    			if (lst.get(index).getValue() == Integer.parseInt(request.getParameter("currentValue").toString()) || lst.get(index).getColor() == Integer.parseInt(request.getParameter("currentColor").toString())){ 				
+		    				
+		    				if(lst.get(index).getValue() == 10){
+		    					ac.plusTwo(player,code,Integer.parseInt(request.getParameter("index").toString()));	
+		    				}
+		    				else{
+		    					ac.ThrowNumericCard(player,code,Integer.parseInt(request.getParameter("index").toString()));
+		    				}
+		    				ac.changePlayer(player.trim(), code.trim());
+		    				out.print("{\"status\":true}");
+		    			}
+		    			
+		    			else if(lst.get(index).getValue() == 13){
+	    					ac.plusFour(player,code,Integer.parseInt(request.getParameter("index").toString()));
+		    			}else{
+		    				out.print("{\"status\":false}");
+		    			}
+		    		}
+		    	}else{
+		    		out.print("{\"status\":false,\"message\":\"No es tu turno Chaval, no seas maje\"}");
+		    	}
+		    	
 			}
 		}
 		else if(request.getParameter("option").toString().trim().matches("^draw$")) {
@@ -80,10 +93,6 @@
 					   request.getParameter("currentColor") != null && 
 					   request.getParameter("currentValue") != null){
 						
-						FileManager fm = new FileManager();
-						Converter c = new Converter();
-						List<Card> mainDeck = new ArrayList<>();
-						List<Card> playerDeck = new ArrayList<>();
 						String[] cookies = request.getParameter("cookies").toString().split(";");
 			    		String code = "";
 			    		String player = "";
@@ -97,33 +106,11 @@
 			    			code = cookies[0].trim().replaceAll("code=","");
 			    		}
 			    		
-			    		mainDeck = c.toCardList(fm.Read(String.format("%s/Deck.json",code)));	    		
-			    		
-			    		
-			    		
-			    		Random rand = new Random();
-			    		int i = rand.nextInt(mainDeck.size());
-			    		Card drawCard = mainDeck.get(i);
-			    		mainDeck.remove(i);
-
-
-			    		if (player.equals("1")){			    			
-				    		playerDeck = c.toCardList(fm.Read(String.format("%s/player1.json",code)));
-				    		playerDeck.add(drawCard);
-
-		    				fm.Write(String.format("%s/player1.json", code),c.toJSONString(playerDeck));
-		    				fm.Write(String.format("%s/Deck.json", code),c.toJSONString(mainDeck));
-		    				
-		    				out.print("{\"status\":true}");
-			    		}
-			    		else{
-			    			playerDeck = c.toCardList(fm.Read(String.format("%s/player2.json",code)));
-				    		playerDeck.add(drawCard);
-
-		    				fm.Write(String.format("%s/player2.json", code),c.toJSONString(playerDeck));
-		    				fm.Write(String.format("%s/Deck.json", code),c.toJSONString(mainDeck));
-		    				
-		    				out.print("{\"status\":true}");
+			    		if (ac.verifyTurn(player,code)){
+			    			out.print(ac.draw(player,code,request.getParameter("currentColor"),request.getParameter("currentValue")));
+			    			
+			    		}else{
+			    			out.print("{\"status\":false}");
 			    		}
 			}
 		}

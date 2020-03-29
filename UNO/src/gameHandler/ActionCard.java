@@ -79,5 +79,91 @@ public class ActionCard {
 		plusTwo(currentPlayer, path, index);
 		plusTwo(currentPlayer, path, index);
 	}
+	
+	public void changePlayer(String player, String path) {
+		if (player.equals("1")) {
+			fm.Write(String.format("%s/turn.txt",path),"2");
+		}else {
+			fm.Write(String.format("%s/turn.txt",path), "1");
+		}
+	}
+	
+	public boolean verifyTurn(String player, String code) {
+		if(player.equals(fm.Read(String.format("%s/turn.txt",code)).toString().replaceAll("\n", ""))){			
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public String draw(String player,String path, String currentColor, String currentValue) {
+		List<Card> mainDeck = new ArrayList<>();
+		List<Card> playerDeck = new ArrayList<>();
+		boolean status = false;
+		
+		mainDeck = c.toCardList(fm.Read(String.format("%s/Deck.json",path)));	
+		
+
+		if (player.equals("1")){			    			
+    		playerDeck = c.toCardList(fm.Read(String.format("%s/player1.json",path)));
+    		
+    		boolean canDraw = true;
+    		
+    		for (Card card : playerDeck) {
+    			if(
+    				card.getValue()==Integer.parseInt(currentValue) ||
+    				card.getColor()==Integer.parseInt(currentColor)
+    			){
+    				canDraw = false;
+    				break;
+    			}
+    		}
+    		
+    		if (canDraw) {
+    			
+    			int i = Random(mainDeck.size());
+    			Card drawCard = mainDeck.get(i);
+    			mainDeck.remove(i);
+    			
+    			playerDeck.add(drawCard);
+    			fm.Write(String.format("%s/player1.json", path),c.toJSONString(playerDeck));
+    			fm.Write(String.format("%s/Deck.json", path),c.toJSONString(mainDeck));
+    			status = true;
+    		}
+    			
+		}
+		else{
+			
+			playerDeck = c.toCardList(fm.Read(String.format("%s/player2.json",path)));
+    		
+    		boolean canDraw = true;
+    		
+    		for (Card card : playerDeck) {
+    			if(
+    				card.getValue()==Integer.parseInt(currentValue) ||
+    				card.getColor()==Integer.parseInt(currentColor)
+    			){
+    				canDraw = false;
+    				break;
+    			}
+    		}
+    		
+    		if (canDraw) {
+    			
+    			int i = Random(mainDeck.size());
+    			Card drawCard = mainDeck.get(i);
+    			mainDeck.remove(i);
+    			
+    			playerDeck.add(drawCard);
+    			fm.Write(String.format("%s/player2.json", path),c.toJSONString(playerDeck));
+    			fm.Write(String.format("%s/Deck.json", path),c.toJSONString(mainDeck));
+    			status = true;
+    		}
+		}
+
+		//Operador Ternario
+		return status?"{\"status\":true}":"{\"status\":false}";
+	}
 
 }
