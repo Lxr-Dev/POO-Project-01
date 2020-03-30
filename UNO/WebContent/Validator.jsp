@@ -49,7 +49,6 @@
 		    				else{
 		    					ac.ThrowNumericCard(player,code,Integer.parseInt(request.getParameter("index").toString()));
 		    				}
-		    				ac.changePlayer(player, code);
 		    				out.print("{\"status\":true}");
 		    			}
 		    			
@@ -71,7 +70,6 @@
 		    				else{
 		    					ac.ThrowNumericCard(player,code,Integer.parseInt(request.getParameter("index").toString()));
 		    				}
-		    				ac.changePlayer(player.trim(), code.trim());
 		    				out.print("{\"status\":true}");
 		    			}
 		    			
@@ -105,6 +103,8 @@
 			    			player = cookies[1].trim().replaceAll("player=","");
 			    			code = cookies[0].trim().replaceAll("code=","");
 			    		}
+			    		
+			    		
 			    		
 			    		if (ac.verifyTurn(player,code)){
 			    			out.print(ac.draw(player,code,request.getParameter("currentColor"),request.getParameter("currentValue")));

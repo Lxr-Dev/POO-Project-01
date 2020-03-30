@@ -41,5 +41,29 @@ public class Converter {
 		}
 		return list;
 	}
-	
+	/**
+	 *forma la ruta del archivo json donde se guardan los datos del Jugador
+	 * @param player.
+	 * @param folderCode.
+	 * @return devulve un string con la ruta del archivo del jugador
+	 * */
+	public String playerPath(int player, String folderCode){
+		return String.format("%s/player%s.json", folderCode, player);
+	}
+	/**
+	 * Obtiene el Indentificador del player: 1, 2, 3, 4
+	 * @param player.
+	 * @return Indentificador del jugador
+	 * */
+	public int GetPlayerValue(String player){
+		return Integer.parseInt(player.replaceAll("\\D",""));
+	}
+	/**
+	 * Obtiene un numero entero en una cadena de texto
+	 * @param player.
+	 * @return numero entero
+	 * */
+	public Integer GetIntValue(String value){
+		return GetPlayerValue(value);
+	}
 }
