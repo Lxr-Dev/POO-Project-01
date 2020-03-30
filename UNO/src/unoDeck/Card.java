@@ -7,6 +7,11 @@ public class Card {
 	private String img;
 	private String type;
 	
+	
+	public Card() {
+		
+	}
+	
 	public Card(Integer value, Integer color, String img, String type) {
 		setValue(value);
 		setColor(color);
@@ -28,6 +33,12 @@ public class Card {
 		return color;
 	}
 	private void setColor(Integer color) {
+		if (color >=0 && color<=4) {
+			this.color = color;
+		}
+		
+	}
+	public void ChangeColor(Integer color) {
 		if (color >=0 && color<=4) {
 			this.color = color;
 		}

@@ -30,16 +30,16 @@ function load() {
 		if (data.graveyard[0].color == 0){
 			document.querySelector("canvas#currentColor").style.backgroundColor = "green";
 			document.querySelector("canvas#currentColor").dataset.value = 0;
-		}else
-		if(data.graveyard[0].color == 1){
+		}
+		else if(data.graveyard[0].color == 1){
 			document.querySelector("canvas#currentColor").style.backgroundColor = "orange";
 			document.querySelector("canvas#currentColor").dataset.value = 1;
-		}else
-		if(data.graveyard[0].color == 2){
+		}
+		else if(data.graveyard[0].color == 2){
 			document.querySelector("canvas#currentColor").style.backgroundColor = "pink";
 			document.querySelector("canvas#currentColor").dataset.value = 2;
-		}else
-		if(data.graveyard[0].color == 3){
+		}
+		else if(data.graveyard[0].color == 3){
 			document.querySelector("canvas#currentColor").style.backgroundColor = "gray";
 			document.querySelector("canvas#currentColor").dataset.value = 3;
 		}else{

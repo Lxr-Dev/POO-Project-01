@@ -37,7 +37,7 @@ private List<Card> deck;
 				this.deck.add(new Card(i,3,String.format("Resources/white%s.png",i),"numeric"));
 			}
 			
-			//Generando las cartas de +2, Cambio de Dirección, Cambio de 4 colores distintos
+			//Generando las cartas de +2, Cambio de Dirección, Bloqueo
 			for (int i=10;i<13;i++) {
 				this.deck.add(new Card(i,0,String.format("Resources/green%s.png",i),"special"));
 				this.deck.add(new Card(i,1,String.format("Resources/orange%s.png",i),"special"));

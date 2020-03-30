@@ -21,6 +21,7 @@ public class ActionCard {
 	 * */
 	public boolean ThrowNumericCard(String player, String gameId, int index) {
 		boolean playedState = false;
+		String p = player;
 		player = c.playerPath(c.GetPlayerValue(player), gameId);
 		List<Card> playerDeck = c.toCardList(fm.Read(player));
 		List<Card> graveyard = c.toCardList(fm.Read(String.format("%s/graveyard.json", gameId)));
@@ -32,7 +33,7 @@ public class ActionCard {
 			graveyard.add(playerDeck.remove(index));
 			fm.Write(String.format("%s/graveyard.json", gameId),c.toJSONString(graveyard));
 			fm.Write(player,c.toJSONString(playerDeck));
-			changePlayer(player, gameId);
+			changePlayer(p, gameId);
 			playedState = true;
 		}		
 		return playedState;
@@ -100,21 +101,27 @@ public class ActionCard {
 		String enemy = c.playerPath(c.GetPlayerValue(currentPlayer)==1? 2:1, gameId);
 		
 		List<Card> mainDeck ,playerDeck, enemyDeck, graveyard = new ArrayList<>();
-
-		mainDeck = c.toCardList(fm.Read(String.format("%s/Deck.json",gameId)));
+		graveyard = c.toCardList(fm.Read(String.format("%s/graveyard.json", gameId)));		
 		playerDeck = c.toCardList(fm.Read(player));
-		enemyDeck = c.toCardList(fm.Read(enemy));
-		graveyard.add(playerDeck.remove(index));
 		
-		for(int i = 0; i<2;i++) {			
-			enemyDeck.add(mainDeck.remove(Random(mainDeck.size())));
-		}			
+		boolean color = playerDeck.get(index).getColor() == graveyard.get(0).getColor()? true: false;
+		boolean value = playerDeck.get(index).getValue() == graveyard.get(0).getValue()? true: false;
+		if(color || value){
+			mainDeck = c.toCardList(fm.Read(String.format("%s/Deck.json",gameId)));
+			enemyDeck = c.toCardList(fm.Read(enemy));
+			graveyard.clear();
+			graveyard.add(playerDeck.remove(index));
+			
+			for(int i = 0; i<2;i++) {			
+				enemyDeck.add(mainDeck.remove(Random(mainDeck.size())));
+			}			
 
-		fm.Write(String.format("%s/Deck.json", gameId),c.toJSONString(mainDeck));
-		fm.Write(String.format("%s/graveyard.json", gameId),c.toJSONString(graveyard));
-		fm.Write(player,c.toJSONString(playerDeck));  
-		fm.Write(enemy,c.toJSONString(enemyDeck));
-		changePlayer(player, gameId);
+			fm.Write(String.format("%s/Deck.json", gameId),c.toJSONString(mainDeck));
+			fm.Write(String.format("%s/graveyard.json", gameId),c.toJSONString(graveyard));
+			fm.Write(player,c.toJSONString(playerDeck));  
+			fm.Write(enemy,c.toJSONString(enemyDeck));
+			changePlayer(currentPlayer, gameId);
+		}	
 	}
 
 	/**
@@ -124,8 +131,31 @@ public class ActionCard {
 	 * @param path.
 	 * */
 	public void plusFour(String currentPlayer, String gameId, int index){
-		plusTwo(currentPlayer, gameId, index);
-		plusTwo(currentPlayer, gameId, index);
+
+		String player = c.playerPath(c.GetPlayerValue(currentPlayer), gameId);
+		String enemy = c.playerPath(c.GetPlayerValue(currentPlayer)==1? 2:1, gameId);
+		
+		List<Card> mainDeck ,playerDeck, enemyDeck, graveyard = new ArrayList<>();
+
+		mainDeck = c.toCardList(fm.Read(String.format("%s/Deck.json",gameId)));
+		playerDeck = c.toCardList(fm.Read(player));
+		enemyDeck = c.toCardList(fm.Read(enemy));
+		graveyard = c.toCardList(fm.Read(String.format("%s/graveyard.json", gameId)));		
+		
+		for(int i = 0; i<4;i++) {			
+			enemyDeck.add(mainDeck.remove(Random(mainDeck.size())));
+		}			
+		
+		Card card = playerDeck.remove(index);
+		card.ChangeColor(graveyard.get(0).getColor());
+
+		graveyard.clear();
+		graveyard.add(card);
+
+		fm.Write(String.format("%s/Deck.json", gameId),c.toJSONString(mainDeck));
+		fm.Write(String.format("%s/graveyard.json", gameId),c.toJSONString(graveyard));
+		fm.Write(player,c.toJSONString(playerDeck));  
+		fm.Write(enemy,c.toJSONString(enemyDeck));
 		changePlayer(currentPlayer, gameId);
 	}
 	
@@ -137,6 +167,7 @@ public class ActionCard {
 	 * @param newColor.
 	 * */
 	public void changeColor(String player, String gameId, int index, String newColor){
+		
 		player = c.playerPath(c.GetPlayerValue(player), gameId);
 		List<Card> playerDeck = c.toCardList(fm.Read(player));
 		List<Card> graveyard = c.toCardList(fm.Read(String.format("%s/graveyard.json", gameId)));
@@ -179,7 +210,7 @@ public class ActionCard {
 	 * @param player.
 	 * @param gameId.
 	 * */
-	private void changePlayer(String player, String gameId) {		
+	private void changePlayer(String player, String gameId) {			
 		String playerTurn = c.GetPlayerValue(player) == 1? "2":"1";
 		fm.Write(String.format("%s/turn.txt",gameId), playerTurn);
 	}
