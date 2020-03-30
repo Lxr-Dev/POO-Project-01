@@ -169,6 +169,7 @@ public class ActionCard {
 	public void changeColor(String player, String gameId, int index){
 		
 		player = c.playerPath(c.GetPlayerValue(player), gameId);
+		
 		List<Card> playerDeck = c.toCardList(fm.Read(player));
 		List<Card> graveyard = c.toCardList(fm.Read(String.format("%s/graveyard.json", gameId)));
 		Card card = playerDeck.remove(index);
@@ -176,14 +177,15 @@ public class ActionCard {
 		graveyard.add(card);
 		fm.Write(String.format("%s/graveyard.json", gameId),c.toJSONString(graveyard));
 		fm.Write(player,c.toJSONString(playerDeck));
-		changePlayer(player, gameId);
 	}
 	
 	public void newColor(String player, String newColor, String gameId) {
+		String p = player;
 		List<Card> graveyard = c.toCardList(fm.Read(String.format("%s/graveyard.json",gameId)));
 		graveyard.get(0).ChangeColor(c.GetIntValue(newColor));
+		
 		fm.Write(String.format("%s/graveyard.json",gameId),c.toJSONString(graveyard));
-		changePlayer(player,gameId);
+		changePlayer(p,gameId);
 	}
 
 	/**
@@ -264,7 +266,7 @@ public class ActionCard {
 			status = true;
 		}
 
-		return status?"{\"status\":true}":"{\"status\":false}"; //Operador Ternario
+		return status?"{\"status\":true,\"message\":\"Se robó una carta\"}":"{\"status\":false,\"message\":\"Tiene Cartas para lanzar en su Mazo\"}"; //Operador Ternario
 	}
 
 }

@@ -123,10 +123,10 @@
 				<img id="graveyard" data-value="" height="115vw">
 				<canvas id ="currentColor"></canvas>
 				<div id = "colorSelect">
-					<button class="btn_color" value="0" onclick="changeColor(this);" style='background-color:pink;'>Pink</button>
-					<button class="btn_color" value="1" onclick="changeColor(this);" style='background-color:green;'>Green</button>
-					<button class="btn_color" value="2" onclick="changeColor(this);" style='background-color:gray;'>Gray</button>
-					<button class="btn_color" value="3" onclick="changeColor(this);" style='background-color:orange;'>Orange</button>
+					<button class="btn_color" value="0" onclick="changeColor(this);" style='background-color:green;'>Green</button>
+					<button class="btn_color" value="1" onclick="changeColor(this);" style='background-color:orange;'>Orange</button>
+					<button class="btn_color" value="2" onclick="changeColor(this);" style='background-color:pink;'>Pink</button>
+					<button class="btn_color" value="3" onclick="changeColor(this);" style='background-color:gray;'>Gray</button>
 				</div>
 			</div>
 			

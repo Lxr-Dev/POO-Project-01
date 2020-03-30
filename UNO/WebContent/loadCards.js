@@ -2,26 +2,29 @@
  * 
  */
 
-var running;
-
-window.onload = load;
 window.onload = socketSimulator;
 
 function socketSimulator(){
-	var running = setTimeout(listener,2500);
+	load();
+	running = setTimeout(listener,1000);
 }
 
 function listener(){
+
 	$.post("changeTurn.jsp",{"cookies":document.cookie},function(data){
 		data = JSON.parse(`${data}`);
 		if(data.yourTurn){
-			console.log("Es tu turno chaval");
+			document.getElementById("player").style.opacity = "1"; 
 		}else{
-			console.log("No es tu turno, estoy esperando");
+			document.getElementById("player").style.opacity = "0.5"; 
 		}
 		load();
 		socketSimulator();
 	});
+}
+
+function stopSocket(){
+	clearTimeout(running);
 }
 
 function load() {
@@ -61,14 +64,8 @@ function load() {
 		else if(data.graveyard[0].color == 3){
 			document.querySelector("canvas#currentColor").style.backgroundColor = "gray";
 			document.querySelector("canvas#currentColor").dataset.value = 3;
-		}else{
-			document.querySelector("canvas#currentColor").style.backgroundColor = "green";
-			document.querySelector("canvas#currentColor").dataset.value = 4;
 		}
 		
-		if(document.querySelector("img#graveyard").getAttribute('data-value')){
-			document.getElementById("colorSelect").style.visibility = "visible";
-		}
 	});
 	
 	return false;	
@@ -81,18 +78,16 @@ function Throw(imgButton){
 	var color = document.querySelector("canvas#currentColor").getAttribute('data-value');
 	var currentValue = document.querySelector("img#graveyard").getAttribute('data-value');
 	
-	if(imgButton.getAttribute('data-value') == "14"){
-		
-		document.getElementById("colorSelect").style.visibility = "visible";
-		
+	if(imgButton.src == "http://localhost:8080/UNO/Resources/wild.png"){
 		$.post("Validator.jsp",{"cookies":cookies,"index":imgButton.getAttribute('data-value'),"currentColor":color,"currentValue":currentValue,"option":"throw"},function(data){
 			data = JSON.parse(`${data}`);
-			if(data.status){	
-				document.querySelector("img#graveyard").src = imgButton.src;
+			if(data.status){
+				stopSocket();
+				document.getElementById("colorSelect").style.visibility = "visible";
+			}else{
+				alert(data.message);
 			}
-			else {
-				alert("No sea tonto, tire otra carta");
-			}
+			
 		});
 	}
 	else{		
@@ -102,13 +97,12 @@ function Throw(imgButton){
 				load();				
 			}
 			else {
-				alert("No sea tonto, tire otra carta");
+				alert(data.message);
 			}
 		});
 	}
-	
-	
 }
+
 
 function Draw(imgButton){
 
@@ -121,19 +115,33 @@ function Draw(imgButton){
 			load();
 		}
 		else {
-			alert("No sea tonto, se saco");
+			alert(data.message);
 		}
 	});
 }
 
 function changeColor(selectedColor){
 	if (selectedColor.value == "0"){
-		document.querySelector("canvas#currentColor").style.backgroundColor = "pink";
-	}else if (selectedColor.value == "1"){
 		document.querySelector("canvas#currentColor").style.backgroundColor = "green";
-	}else if (selectedColor.value == "2"){
-		document.querySelector("canvas#currentColor").style.backgroundColor = "gray";
-	}else if (selectedColor.value == "3"){
+	}else if (selectedColor.value == "1"){
 		document.querySelector("canvas#currentColor").style.backgroundColor = "orange";
+	}else if (selectedColor.value == "2"){
+		document.querySelector("canvas#currentColor").style.backgroundColor = "pink";
+	}else if (selectedColor.value == "3"){
+		document.querySelector("canvas#currentColor").style.backgroundColor = "gray";
 	}
+	
+	var cookies = document.cookie;
+	var color = selectedColor.value
+	
+	$.post("Validator.jsp",{"cookies":cookies,"currentColor":color,"option":"changeColor"},function(data){
+		data = JSON.parse(`${data}`);
+		if(data.status){	
+			document.getElementById("colorSelect").style.visibility = "hidden";
+			socketSimulator();
+		}
+		else {
+			alert(data.message);
+		}
+	});
 }
