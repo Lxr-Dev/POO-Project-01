@@ -5,6 +5,25 @@
 var running;
 
 window.onload = load;
+window.onload = socketSimulator;
+
+function socketSimulator(){
+	var running = setTimeout(listener,2500);
+}
+
+function listener(){
+	$.post("changeTurn.jsp",{"cookies":document.cookie},function(data){
+		data = JSON.parse(`${data}`);
+		if(data.yourTurn){
+			console.log("Es tu turno chaval");
+		}else{
+			console.log("No es tu turno, estoy esperando");
+		}
+		load();
+		socketSimulator();
+	});
+}
+
 function load() {
 	var cookies = document.cookie;
 	$.post("getCard.jsp",{"cookies":cookies},function(data){
@@ -50,23 +69,11 @@ function load() {
 		if(document.querySelector("img#graveyard").getAttribute('data-value')){
 			document.getElementById("colorSelect").style.visibility = "visible";
 		}
-		var running = setTimeout(listener,2500);
 	});
 	
 	return false;	
 }
 
-function listener(){
-	$.post("changeTurn.jsp",{"cookies":document.cookie},function(data){
-		data = JSON.parse(`${data}`);
-		if(data.yourTurn){
-			console.log("Es tu turno chaval");
-		}else{
-			console.log("No es tu turno, estoy esperando");
-		}
-		load();
-	});
-}
 
 function Throw(imgButton){
 
