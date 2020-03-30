@@ -46,6 +46,10 @@ function load() {
 			document.querySelector("canvas#currentColor").style.backgroundColor = "green";
 			document.querySelector("canvas#currentColor").dataset.value = 4;
 		}
+		
+		if(document.querySelector("img#graveyard").getAttribute('data-value')){
+			document.getElementById("colorSelect").style.visibility = "visible";
+		}
 		var running = setTimeout(listener,2500);
 	});
 	
@@ -70,15 +74,33 @@ function Throw(imgButton){
 	var color = document.querySelector("canvas#currentColor").getAttribute('data-value');
 	var currentValue = document.querySelector("img#graveyard").getAttribute('data-value');
 	
-	$.post("Validator.jsp",{"cookies":cookies,"index":imgButton.getAttribute('data-value'),"currentColor":color,"currentValue":currentValue,"option":"throw"},function(data){
-		data = JSON.parse(`${data}`);
-		if(data.status){
-			load();			
-		}
-		else {
-			alert("No sea tonto, tire otra carta");
-		}
-	});
+	if(imgButton.getAttribute('data-value') == "14"){
+		
+		document.getElementById("colorSelect").style.visibility = "visible";
+		
+		$.post("Validator.jsp",{"cookies":cookies,"index":imgButton.getAttribute('data-value'),"currentColor":color,"currentValue":currentValue,"option":"throw"},function(data){
+			data = JSON.parse(`${data}`);
+			if(data.status){	
+				document.querySelector("img#graveyard").src = imgButton.src;
+			}
+			else {
+				alert("No sea tonto, tire otra carta");
+			}
+		});
+	}
+	else{		
+		$.post("Validator.jsp",{"cookies":cookies,"index":imgButton.getAttribute('data-value'),"currentColor":color,"currentValue":currentValue,"option":"throw"},function(data){
+			data = JSON.parse(`${data}`);
+			if(data.status){
+				load();				
+			}
+			else {
+				alert("No sea tonto, tire otra carta");
+			}
+		});
+	}
+	
+	
 }
 
 function Draw(imgButton){
@@ -95,4 +117,16 @@ function Draw(imgButton){
 			alert("No sea tonto, se saco");
 		}
 	});
+}
+
+function changeColor(selectedColor){
+	if (selectedColor.value == "0"){
+		document.querySelector("canvas#currentColor").style.backgroundColor = "pink";
+	}else if (selectedColor.value == "1"){
+		document.querySelector("canvas#currentColor").style.backgroundColor = "green";
+	}else if (selectedColor.value == "2"){
+		document.querySelector("canvas#currentColor").style.backgroundColor = "gray";
+	}else if (selectedColor.value == "3"){
+		document.querySelector("canvas#currentColor").style.backgroundColor = "orange";
+	}
 }

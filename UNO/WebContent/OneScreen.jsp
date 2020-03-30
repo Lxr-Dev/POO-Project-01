@@ -103,8 +103,9 @@
 				height:20px;
 			}
 			
-			.colorContainer{
+			div#colorSelect{
 				position:absolute;
+				visibility:hidden;
 				
 			}		
 			
@@ -121,11 +122,11 @@
 				<img class="mazo" onclick="Draw(this);" id="gameDeck" src="Resources/BackCard.png" height="115vw">
 				<img id="graveyard" data-value="" height="115vw">
 				<canvas id ="currentColor"></canvas>
-				<div class="colorContainer">
-					<button class="btn_color" style='background-color:pink;'>Pink</button>
-					<button class="btn_color" style='background-color:green;'>Green</button>
-					<button class="btn_color" style='background-color:gray;'>Gray</button>
-					<button class="btn_color" style='background-color:orange;'>Orange</button>
+				<div id = "colorSelect">
+					<button class="btn_color" value="0" onclick="changeColor(this);" style='background-color:pink;'>Pink</button>
+					<button class="btn_color" value="1" onclick="changeColor(this);" style='background-color:green;'>Green</button>
+					<button class="btn_color" value="2" onclick="changeColor(this);" style='background-color:gray;'>Gray</button>
+					<button class="btn_color" value="3" onclick="changeColor(this);" style='background-color:orange;'>Orange</button>
 				</div>
 			</div>
 			

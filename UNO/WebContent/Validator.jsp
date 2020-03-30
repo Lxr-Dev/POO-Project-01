@@ -51,7 +51,11 @@
 	    					ac.plusFour(player,code,index);
 	    					result = true;
 	    				}
-	    				out.print(String.format("{\"status\":%s", result? "true}":"false,\"message\":\"Carta Invalida\"}"));		
+	    				else if (lst.get(index).getValue() == 14){
+	    					ac.changeColor(player,code,index);
+	    				}
+	    				boolean win = ac.WinnerPlayer(player,code);
+	    				out.print(String.format("{\"winner\":%s,\"status\":%s",win,result? "true}":"false,\"message\":\"Carta Invalida\"}"));		
 						
 				}
 				else out.print("{\"status\":false,\"message\":\"No es tu turno Chaval, no seas maje\"}");

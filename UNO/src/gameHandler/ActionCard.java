@@ -166,18 +166,24 @@ public class ActionCard {
 	 * @param index.
 	 * @param newColor.
 	 * */
-	public void changeColor(String player, String gameId, int index, String newColor){
+	public void changeColor(String player, String gameId, int index){
 		
 		player = c.playerPath(c.GetPlayerValue(player), gameId);
 		List<Card> playerDeck = c.toCardList(fm.Read(player));
 		List<Card> graveyard = c.toCardList(fm.Read(String.format("%s/graveyard.json", gameId)));
 		Card card = playerDeck.remove(index);
-		card = new Card(card.getValue(), c.GetIntValue(newColor), card.getImg(), card.getType());
 		graveyard.clear();			   
 		graveyard.add(card);
 		fm.Write(String.format("%s/graveyard.json", gameId),c.toJSONString(graveyard));
 		fm.Write(player,c.toJSONString(playerDeck));
 		changePlayer(player, gameId);
+	}
+	
+	public void newColor(String player, String newColor, String gameId) {
+		List<Card> graveyard = c.toCardList(fm.Read(String.format("%s/graveyard.json",gameId)));
+		graveyard.get(0).ChangeColor(c.GetIntValue(newColor));
+		fm.Write(String.format("%s/graveyard.json",gameId),c.toJSONString(graveyard));
+		changePlayer(player,gameId);
 	}
 
 	/**
