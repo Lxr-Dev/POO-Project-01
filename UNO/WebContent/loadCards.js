@@ -6,6 +6,11 @@ var running;
 
 window.onload = load;
 function load() {
+	GetCard();
+	running =  setInterval(listener,1000);
+}
+
+function GetCard(){
 	var cookies = document.cookie;
 	$.post("getCard.jsp",{"cookies":cookies},function(data){
 		
@@ -50,10 +55,10 @@ function load() {
 		if(document.querySelector("img#graveyard").getAttribute('data-value')){
 			document.getElementById("colorSelect").style.visibility = "visible";
 		}
-		var running = setTimeout(listener,2500);
+		
 	});
 	
-	return false;	
+	return false;
 }
 
 function listener(){
@@ -61,10 +66,12 @@ function listener(){
 		data = JSON.parse(`${data}`);
 		if(data.yourTurn){
 			console.log("Es tu turno chaval");
+			document.getElementById("player").style.opacity = "1"; 
 		}else{
 			console.log("No es tu turno, estoy esperando");
+			document.getElementById("player").style.opacity = "0.5"; 
 		}
-		load();
+		GetCard();
 	});
 }
 
@@ -82,6 +89,7 @@ function Throw(imgButton){
 			data = JSON.parse(`${data}`);
 			if(data.status){	
 				document.querySelector("img#graveyard").src = imgButton.src;
+				GetCard();
 			}
 			else {
 				alert("No sea tonto, tire otra carta");
@@ -91,15 +99,14 @@ function Throw(imgButton){
 	else{		
 		$.post("Validator.jsp",{"cookies":cookies,"index":imgButton.getAttribute('data-value'),"currentColor":color,"currentValue":currentValue,"option":"throw"},function(data){
 			data = JSON.parse(`${data}`);
-			if(data.status){
-				load();				
+			if(data.status){		
+				GetCard();
 			}
 			else {
-				alert("No sea tonto, tire otra carta");
+				alert("No sea tonto, tira otra carta esta no es valida");
 			}
 		});
 	}
-	
 	
 }
 
@@ -111,11 +118,12 @@ function Draw(imgButton){
 	$.post("Validator.jsp",{"cookies":cookies,"currentColor":color,"currentValue":currentValue,"option":"draw"},function(data){
 		data = JSON.parse(`${data}`);
 		if(data.status){
-			load();
 		}
 		else {
-			alert("No sea tonto, se saco");
+			alert("No puedes sacar cartas del mazo, no seas puto -_-");
+			//document.getElementById("gameDeck").style.opacity = "0.5"; 
 		}
+		GetCard();
 	});
 }
 
