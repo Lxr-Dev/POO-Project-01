@@ -37,6 +37,12 @@ function load() {
 		
 		data = JSON.parse(`${data}`.trim());
 		
+		console.log(data.enemy);
+		
+		if (data.enemy == 0){
+			location = "Loser.jsp";
+		}
+		
 		var images="";
 		
 		for (i in data.deck){

@@ -24,11 +24,12 @@
     			result.append(fm.Read(String.format("%s/player1.json",code)));
     			String[] count = fm.Read(String.format("%s/player2.json",code)).split("img");
     			result.append(String.format(",\"enemy\":%s,",count.length -1));
+    			
     		}else{
     			result.append(fm.Read(String.format("%s/player2.json",code)));
     			String[] count = fm.Read(String.format("%s/player1.json",code)).split("img");
     			result.append(String.format(",\"enemy\":%s,",count.length -1));
-    			
+
     		}
     		result.append(String.format("\"graveyard\":%s,",fm.Read(String.format("%s/graveyard.json",code))));
     		
