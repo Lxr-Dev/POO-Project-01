@@ -1,6 +1,8 @@
 /**
  * 
  */
+
+//Función para Unirse a una partida existente
 function join(){
 	$.post("Services/seek.jsp",{"code":code.value},function (data){
 		
@@ -11,12 +13,14 @@ function join(){
 		if (data.status){
 			
 			//Redirigir al usuario a la siguiente pantalla
+			
 			document.cookie = `code=${code.value};max-age:7200`;
 			document.cookie = `player=2`;
 			location = `OneScreen.jsp`;
 			
 		}else{
-			//var abrir2 = document.getElementById('abrir2');
+			
+			//Mostrar un error en caso de no encontrar el código
 			
 			var em = new ErrorManager();
 			var body = document.getElementById("message");

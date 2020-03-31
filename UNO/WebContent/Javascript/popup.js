@@ -7,6 +7,7 @@ let abrir2 = document.getElementById('abrir2');
 let abrir3 = document.getElementById('abrir3');
 let abrir4 = document.getElementById('abrir4');
 let cerrar = document.getElementById('close');
+
 //funcion para generar codigo
 var message1='<h4 id="codeS">CÓDIGO ACCESO</h4><p></p><br><form><button type="button" onclick="generateCode();" class="btn-submit">Generar Código</button>&nbsp;&nbsp;&nbsp;<button type="button" onclick="Start();" class="btn-submit">Iniciar Partida</button></form>';
 var message2='<div id="exception"></div><h4>INGRESE CÓDIGO ACCESO</h4><form onsubmit="return join();"><input id="code" type="text" placeholder="Ingrese código de acceso"><br><button type="submit" class="btn-submit">Unirse</button></form>';

@@ -1,10 +1,10 @@
 <%@page import="java.util.Random"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@ page import="gameHandler.*" %>
+<%@ page import="unoDeck.*" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<%@page import="java.util.List"%>
-    <%@ page import="gameHandler.*" %>
-    <%@ page import="unoDeck.*" %>
 <% 
 	if(request.getParameter("option") != null){
 		

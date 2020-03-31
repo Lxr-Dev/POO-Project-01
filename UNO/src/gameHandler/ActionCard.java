@@ -269,6 +269,12 @@ public class ActionCard {
 		return status?"{\"status\":true,\"message\":\"Se robó una carta\"}":"{\"status\":false,\"message\":\"Tiene Cartas para lanzar en su Mazo\"}"; //Operador Ternario
 	}
 	
+	/**
+	 * Función para calcular el puntaje del jugador
+	 * @param player.
+	 * @param gameId.
+	 * @return devuelve el puntaje del jugador 
+	 * */
 	public String calculateScore(String player, String code) {
 		List<Card> loser = c.toCardList(fm.Read(String.format("%s/player%s.json",code, player)));
 		

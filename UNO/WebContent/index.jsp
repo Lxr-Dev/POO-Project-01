@@ -4,6 +4,11 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="author" content="Alexis">
+		<meta name="author" content="Andrés">
+		<meta name="author" content="Alexandra">
+		<meta name="author" content="Marco">
+		<meta name="description" content="Menú principal del Juego">
 		<title>UNO &copy;</title>
 		<link rel="shortcut icon" href="Resources/favicon.png"/>
 		<link rel='stylesheet' type='text/css' href='CSS/MenuStyle.css'>

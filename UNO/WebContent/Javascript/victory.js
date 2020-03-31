@@ -4,6 +4,7 @@
 
 window.onload = calculateScore;
 
+//Función para agregar un nuevo usuario a la tabla
 function add(){
 	var meses = new Array ("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
 	var f = new Date();
@@ -18,6 +19,7 @@ function add(){
 	return false;
 }
 
+//Función para calcular el score del jugador
 function calculateScore(){
 	var cookies = document.cookie;
 	$.post("Services/winnerCalls.jsp",{"option":"getScore","cookies":cookies},function(data){

@@ -51,8 +51,6 @@ div#titulo{
 }
 /*cotiene a todos los div */
 div#contenedorPrincipal{
-	/*background-position: center;
-	/*margin-left:135px;*/
 	heigth:100px;
 	width: 80px;
 	position: absolute;
@@ -60,8 +58,6 @@ div#contenedorPrincipal{
 	background-color:#f6eeda;
 	top:0;
 	left:10;
-	/*border-radius: 8px;*/
-	/*padding-bottom:25px;*/
 }
 /*contiene a las cartas del player*/
 div.contenedor{
@@ -97,16 +93,6 @@ img.logo{
 		width:40px;
 		-webkit-border-radius: 50%;
 }
-/*mostrara las imagenes en las cartas*/
-/*img.carta{
-	background-image: url('');
-	background-repeat:no-repeat;
-	display: block;
-	margin:50px auto;
-	width:40px;
-	-webkit-border-radius: 50%;
-}*/
-
 /*baraja de cartas*/
 div#UnoDeck{
 	margin-left: 100px;
@@ -154,8 +140,4 @@ div.contenedor:hover p.texto{
 	padding-top: 20px;
 	opacity: 1;
 }
-/*
-img.carta:hover{
-	height:150px;
-	
-*/
+

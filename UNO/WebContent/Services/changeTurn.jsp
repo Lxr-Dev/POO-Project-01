@@ -1,7 +1,6 @@
+<%@ page import="gameHandler.FileManager" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
-    <%@ page import="gameHandler.FileManager" %>
 <%
 	if(request.getParameter("cookies") != null ){
 		

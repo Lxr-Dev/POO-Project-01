@@ -4,11 +4,13 @@
 
 window.onload = socketSimulator;
 
+//Función para simular un "socket" entre ambos dispositivos
 function socketSimulator(){
 	load();
 	running = setTimeout(listener,1000);
 }
 
+//listener lee constantemente un archivo para verificar el turno del jugador
 function listener(){
 
 	$.post("Services/changeTurn.jsp",{"cookies":document.cookie},function(data){
@@ -23,10 +25,12 @@ function listener(){
 	});
 }
 
+//Detiene el "socket"
 function stopSocket(){
 	clearTimeout(running);
 }
 
+//Función que carga dinámicamente las imágenes de las cartas
 function load() {
 	var cookies = document.cookie;
 	$.post("Services/getCard.jsp",{"cookies":cookies},function(data){
@@ -71,7 +75,7 @@ function load() {
 	return false;	
 }
 
-
+//Función para lanzar las cartas del jugador
 function Throw(imgButton){
 
 	var cookies = document.cookie;
@@ -114,7 +118,7 @@ function Throw(imgButton){
 	}
 }
 
-
+//Función para robar cartas
 function Draw(imgButton){
 
 	var cookies = document.cookie;
@@ -131,6 +135,7 @@ function Draw(imgButton){
 	});
 }
 
+//Función especial para el cambio de color
 function changeColor(selectedColor){
 	if (selectedColor.value == "0"){
 		document.querySelector("canvas#currentColor").style.backgroundColor = "green";
