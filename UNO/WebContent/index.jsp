@@ -4,7 +4,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>U N O &copy;</title>
+		<title>UNO &copy;</title>
+		<link rel="shortcut icon" href="Resources/favicon.png"/>
 		<link rel='stylesheet' type='text/css' href='CSS/MenuStyle.css'>
 		<link rel='stylesheet' type='text/css' href='CSS/popupStyle.css'>
 	</head>

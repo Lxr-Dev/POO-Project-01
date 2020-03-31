@@ -5,6 +5,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Winner</title>
+		<link rel="shortcut icon" href="Resources/favicon.png"/>
 		<link rel='stylesheet' type='text/css' href='CSS/Winner.css'>
 	</head>
 	<body>
