@@ -5,8 +5,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>U N O &copy;</title>
-		<link rel='stylesheet' type='text/css' href='MenuStyle.css'>
-		<link rel='stylesheet' type='text/css' href='popupStyle.css'>
+		<link rel='stylesheet' type='text/css' href='CSS/MenuStyle.css'>
+		<link rel='stylesheet' type='text/css' href='CSS/popupStyle.css'>
 	</head>
 	<body>
 		<%
@@ -20,11 +20,11 @@
 		+"<div class='modal-header flex'><span class='close' id='close'>&times</span>"
 		+"</div><div id='message'class='modal-body'></div></div></div></div>");
 		%>
-		<script src="jquery.js"></script>
-		<script src="ErrorManager.js"></script>
-		<script src="newGame.js"></script>
-		<script src="startGame.js"></script>
-		<script src="joinGame.js"></script>
-		<script src="popup.js"></script>
+		<script src="Javascript/jquery.js"></script>
+		<script src="Javascript/ErrorManager.js"></script>
+		<script src="Javascript/newGame.js"></script>
+		<script src="Javascript/startGame.js"></script>
+		<script src="Javascript/joinGame.js"></script>
+		<script src="Javascript/popup.js"></script>
 	</body>
 </html>

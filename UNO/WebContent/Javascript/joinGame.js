@@ -2,7 +2,7 @@
  * 
  */
 function join(){
-	$.post("seek.jsp",{"code":code.value},function (data){
+	$.post("Services/seek.jsp",{"code":code.value},function (data){
 		
 		console.log(data);
 		

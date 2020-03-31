@@ -11,7 +11,7 @@ function socketSimulator(){
 
 function listener(){
 
-	$.post("changeTurn.jsp",{"cookies":document.cookie},function(data){
+	$.post("Services/changeTurn.jsp",{"cookies":document.cookie},function(data){
 		data = JSON.parse(`${data}`);
 		if(data.yourTurn){
 			document.getElementById("player").style.opacity = "1"; 
@@ -29,7 +29,7 @@ function stopSocket(){
 
 function load() {
 	var cookies = document.cookie;
-	$.post("getCard.jsp",{"cookies":cookies},function(data){
+	$.post("Services/getCard.jsp",{"cookies":cookies},function(data){
 		
 		data = JSON.parse(`${data}`.trim());
 		
@@ -65,7 +65,7 @@ function load() {
 			document.querySelector("canvas#currentColor").style.backgroundColor = "gray";
 			document.querySelector("canvas#currentColor").dataset.value = 3;
 		}
-		
+		document.getElementById("colorSelect").style.visibility = "hidden";
 	});
 	
 	return false;	
@@ -79,20 +79,31 @@ function Throw(imgButton){
 	var currentValue = document.querySelector("img#graveyard").getAttribute('data-value');
 	
 	if(imgButton.src == "http://localhost:8080/UNO/Resources/wild.png"){
-		$.post("Validator.jsp",{"cookies":cookies,"index":imgButton.getAttribute('data-value'),"currentColor":color,"currentValue":currentValue,"option":"throw"},function(data){
+		document.getElementById("colorSelect").style.visibility = "visible";
+		$.post("Services/Validator.jsp",{"cookies":cookies,"index":imgButton.getAttribute('data-value'),"currentColor":color,"currentValue":currentValue,"option":"throw"},function(data){
 			data = JSON.parse(`${data}`);
+			
+			if (data.winner){
+				location = "Winner.jsp"
+			}
+			
 			if(data.status){
 				stopSocket();
-				document.getElementById("colorSelect").style.visibility = "visible";
 			}else{
+				document.getElementById("colorSelect").style.visibility = "hidden";
 				alert(data.message);
 			}
 			
 		});
 	}
 	else{		
-		$.post("Validator.jsp",{"cookies":cookies,"index":imgButton.getAttribute('data-value'),"currentColor":color,"currentValue":currentValue,"option":"throw"},function(data){
+		$.post("Services/Validator.jsp",{"cookies":cookies,"index":imgButton.getAttribute('data-value'),"currentColor":color,"currentValue":currentValue,"option":"throw"},function(data){
 			data = JSON.parse(`${data}`);
+			
+			if (data.winner){
+				location = "Winner.jsp"
+			}
+			
 			if(data.status){
 				load();				
 			}
@@ -109,7 +120,7 @@ function Draw(imgButton){
 	var cookies = document.cookie;
 	var color = document.querySelector("canvas#currentColor").getAttribute('data-value');
 	var currentValue = document.querySelector("img#graveyard").getAttribute('data-value');
-	$.post("Validator.jsp",{"cookies":cookies,"currentColor":color,"currentValue":currentValue,"option":"draw"},function(data){
+	$.post("Services/Validator.jsp",{"cookies":cookies,"currentColor":color,"currentValue":currentValue,"option":"draw"},function(data){
 		data = JSON.parse(`${data}`);
 		if(data.status){
 			load();
@@ -134,7 +145,7 @@ function changeColor(selectedColor){
 	var cookies = document.cookie;
 	var color = selectedColor.value
 	
-	$.post("Validator.jsp",{"cookies":cookies,"currentColor":color,"option":"changeColor"},function(data){
+	$.post("Services/Validator.jsp",{"cookies":cookies,"currentColor":color,"option":"changeColor"},function(data){
 		data = JSON.parse(`${data}`);
 		if(data.status){	
 			document.getElementById("colorSelect").style.visibility = "hidden";

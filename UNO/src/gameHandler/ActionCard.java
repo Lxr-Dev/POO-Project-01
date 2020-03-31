@@ -268,5 +268,23 @@ public class ActionCard {
 
 		return status?"{\"status\":true,\"message\":\"Se robó una carta\"}":"{\"status\":false,\"message\":\"Tiene Cartas para lanzar en su Mazo\"}"; //Operador Ternario
 	}
+	
+	public String calculateScore(String player, String code) {
+		List<Card> loser = c.toCardList(fm.Read(String.format("%s/player%s.json",code, player)));
+		
+		int score = 0;
+		
+		for (Card card : loser) {
+			if (card.getValue() <10) {
+				score+=10;
+			}else if (card.getValue() >= 10 && card.getValue() <13) {
+				score+=20;
+			}else if(card.getValue() == 13 || card.getValue()==14) {
+				score+=50;
+			}
+		}
+		
+		return Integer.toString(score);
+	}
 
 }

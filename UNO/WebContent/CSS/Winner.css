@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+	body{
+		background-color:#17A589;;
+	}
+	
+	div#container{
+	background-color:white;
+		margin:20vh 30%;
+		border: 3px solid black;
+	}
+	
+	.formulario{
+		padding: 70px 0;
+		text-align: center;
+	}
+	
+	input#gamerTag{
+		width:30%;
+		heigth:auto;
+		margin:0 35%;
+		display: block;
+		text-align: center;	
+	}
+	
+	h4{
+		width:30%;
+		display: inline;
+	}
+	
+	.boton{
+		display:block;
+		width:15%;
+		text-align: center;
+		margin:0 42.5%;
+	}

@@ -1,6 +1,8 @@
 package unoDeck;
 import java.util.ArrayList;
 import java.util.List;
+import gameHandler.FileManager;
+
 public class Converter {
 	
 	public Converter() {}
@@ -34,10 +36,14 @@ public class Converter {
 	 * */
 	public List<Card> toCardList(String JSON){
 		List<Card> list = new ArrayList<>();
-		String j = JSON.replaceAll("(\\[)|(\\])|(\\{)|(\\})|(\"value\":)|(\"color\":)|(\"img\":)|(\"type\":)|(\")","");
-		String[] tempCards = j.split(",");
-		for (int i=0; i<tempCards.length; i=i+4) {
-			list.add(new Card(Integer.parseInt(tempCards[i]),Integer.parseInt(tempCards[1+i]),tempCards[2+i],tempCards[3+i]));
+		if (JSON.length()>5) {
+			String j = JSON.replaceAll("(\\[)|(\\])|(\\{)|(\\})|(\"value\":)|(\"color\":)|(\"img\":)|(\"type\":)|(\")","");
+			String[] tempCards = j.split(",");
+			for (int i=0; i<tempCards.length; i=i+4) {
+				list.add(new Card(Integer.parseInt(tempCards[i]),Integer.parseInt(tempCards[1+i]),tempCards[2+i],tempCards[3+i]));
+			}
+		}else {
+			list = null;
 		}
 		return list;
 	}
@@ -65,5 +71,23 @@ public class Converter {
 	 * */
 	public Integer GetIntValue(String value){
 		return GetPlayerValue(value);
+	}
+	
+	public String csvHTMLTable() {
+		FileManager fm = new FileManager();
+		StringBuilder table = new StringBuilder();
+		table.append("{\"status\":true,\"tablita\":\"");
+		table.append("<table border='1'><tr><td>&nbsp;&nbsp;Jugador&nbsp;&nbsp;</td><td>&nbsp;&nbsp;Puntuación&nbsp;&nbsp;</td></tr>");
+		
+		String [] rows = fm.Read("winners.csv").split("\n");
+		
+		for (String row : rows) {
+			String [] columns = row.split(",");
+			table.append(String.format("<tr><td>%s</td><td>%s</td></tr>",columns[0],columns[1]));	
+		}
+		
+		table.append("</table>\"}");
+		
+		return table.toString();
 	}
 }

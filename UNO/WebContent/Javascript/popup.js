@@ -10,7 +10,7 @@ let cerrar = document.getElementById('close');
 //funcion para generar codigo
 var message1='<h4 id="codeS">CÓDIGO ACCESO</h4><p></p><br><form><button type="button" onclick="generateCode();" class="btn-submit">Generar Código</button>&nbsp;&nbsp;&nbsp;<button type="button" onclick="Start();" class="btn-submit">Iniciar Partida</button></form>';
 var message2='<div id="exception"></div><h4>INGRESE CÓDIGO ACCESO</h4><form onsubmit="return join();"><input id="code" type="text" placeholder="Ingrese código de acceso"><br><button type="submit" class="btn-submit">Unirse</button></form>';
-var message3='<div id="scoreTable" class="container-table"><div class="table-title">Tabla de Posiciones</div><div class="table-header">Nombre</div><div class="table-header">Puntuacion</div><div class="table-item">player1</div><div class="table-item">500 pts</div><div class="table-item">player2</div><div class="table-item">354 pts</div><div class="table-item"></div><div class="table-item"></div></div>';
+var message3='<div id="scoreTable" class="container-table"><div class="table-title">Tabla de Ganadores</div><br><br><br><br><br><div id="tablita"></div>';
 var message4='<div id="credits" class="container-table"><div class="table-title">Integrantes</div>'
 +'<div class="table-header">Nombre </div><div class="table-header">#Cta.</div>'
 +'<div class="table-item">name1</div><div class="table-item">20201515963</div><div class="table-item">name2</div>'
@@ -27,7 +27,16 @@ abrir2.addEventListener('click',function(){
 });
 abrir3.addEventListener('click',function(){
 	document.getElementById("message").innerHTML = message3;
+	
+	$.post("Services/table.jsp",{},function(data){
+		data = JSON.parse(`${data}`.trim());	
+		if (data.status){
+			document.querySelector("div#tablita").innerHTML = data.tablita;
+		}
+	});
+	
     modal.style.display = 'block';
+    
 });
 abrir4.addEventListener('click',function(){
 	document.getElementById("message").innerHTML = message4;
