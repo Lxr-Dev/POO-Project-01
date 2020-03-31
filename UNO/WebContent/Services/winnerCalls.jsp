@@ -8,14 +8,18 @@
     	if (
     		request.getParameter("option").toString().trim().matches("^add$") &&
     		request.getParameter("gamerTag") != null &&
-    		request.getParameter("score") != null
+    		request.getParameter("score") != null &&
+    		request.getParameter("date") != null &&
+    		request.getParameter("time") != null
     	){
     		FileManager fm = new FileManager();
     		
     		String gamerTag = request.getParameter("gamerTag").toString().trim();
     		String score = request.getParameter("score").toString().trim();
+    		String date = request.getParameter("date").toString().trim();
+    		String time = request.getParameter("time").toString().trim();
     		
-    		fm.Write("winners.csv",String.format("%s%s,%s",fm.Read("winners.csv"),gamerTag,score));
+    		fm.Write("winners.csv",String.format("%s%s,%s,%s,%s",fm.Read("winners.csv"),gamerTag,score,date,time));
     		
     		out.print("{\"status\":true}");
     		
