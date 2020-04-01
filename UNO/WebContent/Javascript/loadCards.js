@@ -98,9 +98,9 @@ function Throw(imgButton){
 			}
 			
 			if(data.status){
+				document.getElementById("colorSelect").style.visibility = "visible";
 				stopSocket();
 			}else{
-				document.getElementById("colorSelect").style.visibility = "hidden";
 				alert(data.message);
 			}
 			

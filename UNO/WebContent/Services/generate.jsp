@@ -1,4 +1,3 @@
-<%@ page import="unoDeck.Player" %>
 <%@ page import="unoDeck.Deck" %>
 <%@ page import="unoDeck.Card" %>
 <%@ page import="java.util.List" %>
