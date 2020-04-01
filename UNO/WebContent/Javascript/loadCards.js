@@ -17,8 +17,15 @@ function listener(){
 		data = JSON.parse(`${data}`);
 		if(data.yourTurn){
 			document.getElementById("player").style.opacity = "1"; 
+			if(data.changin){
+				document.getElementById("colorSelect").style.visibility = "visible";
+			}
+			else{
+				document.getElementById("colorSelect").style.visibility = "hidden";
+			}
 		}else{
 			document.getElementById("player").style.opacity = "0.5"; 
+			document.getElementById("colorSelect").style.visibility = "hidden";
 		}
 		load();
 		socketSimulator();
@@ -75,7 +82,6 @@ function load() {
 			document.querySelector("canvas#currentColor").style.backgroundColor = "gray";
 			document.querySelector("canvas#currentColor").dataset.value = 3;
 		}
-		document.getElementById("colorSelect").style.visibility = "hidden";
 	});
 	
 	return false;	

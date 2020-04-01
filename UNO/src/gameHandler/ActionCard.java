@@ -293,4 +293,8 @@ public class ActionCard {
 		return Integer.toString(score);
 	}
 
+	public boolean ChanginColor(String gameId) {
+		List<Card> graveyard = c.toCardList(fm.Read(String.format("%s/graveyard.json",gameId)));
+		return graveyard.get(0).getColor() == 4;
+	}
 }

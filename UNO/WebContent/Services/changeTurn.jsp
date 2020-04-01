@@ -1,4 +1,5 @@
 <%@ page import="gameHandler.FileManager" %>
+<%@ page import="gameHandler.ActionCard" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -17,11 +18,18 @@
 			code = cookies[0].trim().replaceAll("code=","");
 		}
 		
+		
 		if(player.trim().equals(fm.Read(String.format("%s/turn.txt",code)).toString().replaceAll("\n", ""))){			
-			out.print("{\"yourTurn\":true}");
+			ActionCard  ac = new ActionCard();
+			if(ac.ChanginColor(code) == true){				
+				out.print("{\"yourTurn\":true,\"changin\":true}");
+			}
+			else {
+				out.print("{\"yourTurn\":true,\"changin\":false}");
+			}
 		}
 		else{
-			out.print("{\"yourTurn\":false}");
+			out.print("{\"yourTurn\":false,\"changin\":false}");
 		}
 		
 	}
