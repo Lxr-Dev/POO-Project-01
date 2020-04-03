@@ -1,0 +1,79 @@
+body{
+	position:absolute;
+	width: 100vw;
+	height: 100vh;
+	padding: 2.5vw;
+	margin: 0;
+}
+
+/*-------CLASES-------*/
+
+.container{}
+
+
+/*-------IDs----------*/
+
+#allContainer{
+	position:absolute;
+	width: 95%;
+	height: 95%;
+	background-color:#581845;
+	display: inline-block;
+	
+}
+
+#searchContainer{
+	display: block;
+	position: relative;
+	width: 100%;
+	height: 15%;
+	background-color: #900C3F;
+	z-index: 40;
+}
+
+#reproductorContainer{
+	display: block;
+	position:relative;
+	width: 100%;
+	height: 85%;
+	background-color: #C70039;
+	z-index: 20;
+}
+
+#playerContainer{
+	position:relative;
+	float: left;
+	width: 65%;
+	height: 100%;
+	background-color: #FF5733 ;
+}
+
+#sideBarContainer{
+	position:relative;
+	float: left;
+	width: 35%;
+	height: 100%;
+	background-color: #FFC300;
+}
+
+#albumContainer{
+	display: inline-block;
+	position:relative;
+	width: 90%;
+	height: 42.5%;
+	margin-left: 5%;
+	margin-top: 5%;
+	background-color: #DAF7A6;
+	z-index: 60;
+}
+
+#artistContainer{
+	display: inline-block;
+	position:relative;
+	width: 90%;
+	height: 42.5%;
+	margin-left: 5%;
+	margin-top: 10%;
+	background-color: #caf9f1;
+	z-index: 40;
+}
